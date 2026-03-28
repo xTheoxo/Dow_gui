@@ -7,8 +7,15 @@ namespace Dow_gui
     {
         bool jdk21 = false;
         string urlJdk = "https://download.oracle.com/java/21/latest/jdk-21_windows-x64_bin.exe";
-        string path = "C:\\Users\\theoa\\source\\repos\\Dow_gui\\Dow_gui\\bin\\Debug\\net9.0-windows";
+        string path = "C:\\Users\\Théo\\source\\repos\\xTheoxo\\Dow_gui\\Dow_gui\\bin\\Debug\\net9.0-windows";
         string cheminJar = "";
+        string cheminBat, contenuBat = "";
+        string cheminEula, contenuEula = "";
+        string chemin = "";
+        string pathBat = "";
+        string pathEula = "";
+
+
         public Form1()
         {
             InitializeComponent();
@@ -17,15 +24,18 @@ namespace Dow_gui
             {
                 button1.Text = "Installer";
                 jdk21 = true;
-                label_jdk21.BackColor = Color.Lime;
+                label_jdk21.BackColor = Color.LightGreen;
+                statutjdk.Text = "JDK 21 est installé";
             }
             else
             {
+                statutjdk.Text = "JDK 21 n'est pas installé";
                 button1.Text = "Installer";
                 jdk21 = false;
                 label_jdk21.BackColor = Color.Red;
 
             }
+            label_Dossier_serv.BackColor = Color.Red;
 
         }
 
@@ -34,15 +44,15 @@ namespace Dow_gui
             if (Path.Exists("C:/Program Files/Java/latest/jdk-21"))
             {
                 MessageBox.Show("Le jdk 21 est déja installé");
-                
+                statutjdk.Text = "JDK 21 est installé";
+
+
             }
             else
             {
-                label_jdk21.BackColor = Color.Red;
+                label_jdk21.BackColor = Color.Yellow;
                 //MessageBox.Show("Le jdk 21 est en cours d'installation, veuillez patienter...");
                 statutjdk.Text = "En cours d'installation...";
-
-
 
 
                 Console.WriteLine("Téléchargement du JDK en cours...");
@@ -62,7 +72,7 @@ namespace Dow_gui
                     }
                 }
 
-                
+
                 // Installation du JDK
                 ProcessStartInfo psi = new ProcessStartInfo
                 {
@@ -81,7 +91,8 @@ namespace Dow_gui
                     Console.WriteLine("Installation terminée !");
                     File.Delete(path + "/" + "jdk-21.exe");
                 }
-                label_jdk21.BackColor = Color.Lime;
+                statutjdk.Text = "JDK 21 est installé";
+                label_jdk21.BackColor = Color.LightGreen;
             }
         }
 
@@ -89,8 +100,6 @@ namespace Dow_gui
         {
 
         }
-
-
 
         private void label2_Click(object sender, EventArgs e)
         {
@@ -103,19 +112,28 @@ namespace Dow_gui
 
             if (dossier.ShowDialog() == DialogResult.OK)
             {
-                string chemin = dossier.SelectedPath;
-                label_Dossier_serv.BackColor = Color.Lime;
+                chemin = dossier.SelectedPath;
+                label_Dossier_serv.BackColor = Color.LightGreen;
                 label2.Text = chemin;
 
-            }
+                pathBat = Path.Combine(chemin, "start.bat");
+                pathEula = Path.Combine(chemin, "eula.txt");
 
+                if (File.Exists(pathBat) && File.Exists(pathEula))
+                {
+                    label_bat.BackColor = Color.LightGreen;
+                }
+                else
+                {
+                    label_bat.BackColor = Color.Red;
+                }
+            }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
-
         private void label_Dossier_serv_Click(object sender, EventArgs e)
         {
 
@@ -123,8 +141,37 @@ namespace Dow_gui
 
         private void button3_Click(object sender, EventArgs e)
         {
-            /*Form2 form = new Form2();
-            form.ShowDialog();*/
+            if (chemin == "")
+            {
+                MessageBox.Show("Veuillez sélectionner un dossier pour le serveur avant de continuer.");
+            }
+            else
+            {
+                /*Form2 form = new Form2();
+                form.ShowDialog();*/
+
+                //if 
+                // EULA
+                //Console.WriteLine("Acceptation du EULA");
+                path = chemin;
+                cheminEula = Path.Combine(path, "eula.txt");
+                contenuEula = @"eula=true";
+                File.WriteAllText(cheminEula, contenuEula);
+
+                //Console.WriteLine("Création du fichier start.bat");
+                cheminBat = Path.Combine(path, "start.bat");
+
+                contenuBat =
+                @"@echo off
+cd /d %~dp0
+java -Xmx4G -jar server.jar nogui
+pause";
+
+                File.WriteAllText(cheminBat, contenuBat);
+
+                Console.WriteLine("Fichier .bat créé avec succès !");
+            }
+
         }
 
         private void label2_Click_1(object sender, EventArgs e)
