@@ -1,38 +1,51 @@
 using System.Diagnostics;
 using System.IO;
+using System.Security.Policy;
 
 namespace Dow_gui
 {
     public partial class Form1 : Form
     {
-        bool jdk21 = false;
         string urlJdk = "https://download.oracle.com/java/21/latest/jdk-21_windows-x64_bin.exe";
-        string path = "C:\\Users\\Théo\\source\\repos\\xTheoxo\\Dow_gui\\Dow_gui\\bin\\Debug\\net9.0-windows";
+        string path = "";
         string cheminJar = "";
         string cheminBat, contenuBat = "";
         string cheminEula, contenuEula = "";
         string chemin = "";
         string pathBat = "";
         string pathEula = "";
-        readonly string javapath = @"C:\Program Files\Java\latest\jdk-21\bin\java.exe";
+        string pathjar = "";
+        string version = "https://fill-data.papermc.io/v1/objects/da497e12b43e5b61c5df150e4bfd0de0f53043e57d2ac98dd59289ee9da4ad68/paper-1.21.11-127.jar";
+        string choixVersion = "";
+
+
+        //readonly string javapath = @"C:\Program Files\Java\latest\jdk-21\bin\java.exe";
+
+        Dictionary<string, (string chem, string urljdk)> JDK = new Dictionary<string, (string chem, string urljdk)>()
+            {
+                { "21", ("C:/Program Files/Java/latest/jdk-21", "https://download.oracle.com/java/21/latest/jdk-21_windows-x64_bin.exe") },
+                { "25", ("C:/Program Files/Java/latest/jdk-25", "https://download.oracle.com/java/21/latest/jdk-25_windows-x64_bin.exe") }
+            };
+
+
 
 
         public Form1()
         {
             InitializeComponent();
 
+
             if (Path.Exists("C:/Program Files/Java/latest/jdk-21"))
             {
                 button1.Text = "Installer";
-                jdk21 = true;
+                
                 label_jdk21.BackColor = Color.LightGreen;
                 statutjdk.Text = "JDK 21 est installé";
             }
             else
             {
                 statutjdk.Text = "JDK 21 n'est pas installé";
-                button1.Text = "  Installer  ";
-                jdk21 = false;
+                
                 label_jdk21.BackColor = Color.Red;
 
             }
@@ -55,9 +68,6 @@ namespace Dow_gui
                 //MessageBox.Show("Le jdk 21 est en cours d'installation, veuillez patienter...");
                 statutjdk.Text = "En cours d'installation...";
 
-
-                Console.WriteLine("Téléchargement du JDK en cours...");
-
                 // Le met dans le dossier créé précédement et le renomme en jdk-21.exe
                 cheminJar = Path.Combine(path, "jdk-21.exe");
 
@@ -72,7 +82,6 @@ namespace Dow_gui
                         await response.Content.CopyToAsync(fs);
                     }
                 }
-
 
                 // Installation du JDK
                 ProcessStartInfo psi = new ProcessStartInfo
@@ -119,16 +128,33 @@ namespace Dow_gui
 
                 pathBat = Path.Combine(chemin, "start.bat");
                 pathEula = Path.Combine(chemin, "eula.txt");
+                pathjar = Path.Combine(chemin, "server.jar");
 
                 if (File.Exists(pathBat) && File.Exists(pathEula))
                 {
                     label_bat.BackColor = Color.LightGreen;
                     button_bat.Text = "Installer";
 
+                    label_bat.Visible = true;
+                    button_bat.Visible = true;
+
+                    Version.Visible = true;
+                    version_mc.Visible = true;
+
+                    label_start.Visible = true;
+                    button_start.Visible = true;
                 }
                 else
                 {
                     label_bat.BackColor = Color.Red;
+                }
+                if (File.Exists(pathjar))
+                {
+                    Version.BackColor = Color.LightGreen;
+                }
+                else
+                {
+                    Version.BackColor = Color.Red;
                 }
             }
         }
@@ -168,12 +194,13 @@ namespace Dow_gui
                 contenuBat =
                 $@"@echo off
 cd /d %~dp0
-""{javapath}"" -Xmx4G -jar server.jar nogui
-pause";
+java -Xmx4G -jar server.jar nogui";
 
                 File.WriteAllText(cheminBat, contenuBat);
 
                 label_bat.BackColor = Color.LightGreen;
+
+
             }
 
         }
@@ -190,18 +217,6 @@ pause";
 
         private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (checkedListBox1.GetItemChecked(0))
-            {
-                version_mc.Text = "Paper";
-            }
-            else if (checkedListBox1.GetItemChecked(1))
-            {
-                version_mc.Text = "Spigot";
-            }
-            else
-            {
-                version_mc.Text = "Choisir sa version";
-            }
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -215,6 +230,9 @@ pause";
             {
                 version_mc.Text = "Vanilla";
                 Papercheck.Checked = false;
+
+                un21onze.Visible = false;
+                un21onze.Checked = false;
             }
             else if (!vanillacheck.Checked && !Papercheck.Checked)
             {
@@ -228,11 +246,64 @@ pause";
             {
                 version_mc.Text = "Paper";
                 vanillacheck.Checked = false;
+                un21onze.Visible = true;
             }
             else if (!vanillacheck.Checked && !Papercheck.Checked)
             {
                 version_mc.Text = "Choisir sa version";
+                un21onze.Visible = false;
+                un21onze.Checked = false;
+
             }
+
+        }
+
+        private void checkBox1_CheckedChanged_1(object sender, EventArgs e)
+        {
+            if (un21onze.Checked)
+            {
+                label_jdk21.Visible = true;
+                button1.Visible = true;
+                statutjdk.Visible = true;
+            }
+            else
+            {
+                label_jdk21.Visible = false;
+                button1.Visible = false;
+                statutjdk.Visible = false;
+            }
+
+        }
+
+        private async void version_mc_Click(object sender, EventArgs e)
+        {
+            //url = version_choix[choixVersion];
+            //Console.WriteLine("Téléchargement de la version " + choixVersion);
+
+            // Le met dans le dossier créé précédement et le renomme en server.jar
+            cheminJar = Path.Combine(path, "server.jar");
+
+            // Voir doc Microsoft > HttpClient
+            using (HttpClient client = new HttpClient())
+            using (HttpResponseMessage response = await client.GetAsync(version))
+            {
+                response.EnsureSuccessStatusCode();
+
+                using (FileStream fs = new FileStream(cheminJar, FileMode.Create))
+                {
+                    await response.Content.CopyToAsync(fs);
+                }
+            }
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

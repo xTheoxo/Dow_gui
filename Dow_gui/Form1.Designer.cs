@@ -41,9 +41,11 @@
             statutjdk = new Label();
             Version = new Label();
             version_mc = new Button();
-            checkedListBox1 = new CheckedListBox();
             vanillacheck = new CheckBox();
             Papercheck = new CheckBox();
+            un21onze = new CheckBox();
+            button_start = new Button();
+            label_start = new Label();
             SuspendLayout();
             // 
             // button1
@@ -54,8 +56,9 @@
             button1.Name = "button1";
             button1.Size = new Size(116, 22);
             button1.TabIndex = 0;
-            button1.Text = "code error";
+            button1.Text = "Installer";
             button1.UseVisualStyleBackColor = false;
+            button1.Visible = false;
             button1.Click += button1_Click;
             // 
             // label_jdk21
@@ -67,6 +70,7 @@
             label_jdk21.Size = new Size(50, 15);
             label_jdk21.TabIndex = 1;
             label_jdk21.Text = "  jdk 21  ";
+            label_jdk21.Visible = false;
             // 
             // label_bat
             // 
@@ -76,6 +80,7 @@
             label_bat.Size = new Size(36, 15);
             label_bat.TabIndex = 2;
             label_bat.Text = "  Bat  ";
+            label_bat.Visible = false;
             label_bat.Click += label2_Click;
             // 
             // button2
@@ -115,6 +120,7 @@
             button_bat.TabIndex = 6;
             button_bat.Text = "Aucun dossier";
             button_bat.UseVisualStyleBackColor = true;
+            button_bat.Visible = false;
             button_bat.Click += button3_Click;
             // 
             // label2
@@ -134,6 +140,7 @@
             statutjdk.Size = new Size(38, 15);
             statutjdk.TabIndex = 8;
             statutjdk.Text = "label3";
+            statutjdk.Visible = false;
             // 
             // Version
             // 
@@ -143,6 +150,7 @@
             Version.Size = new Size(99, 15);
             Version.TabIndex = 9;
             Version.Text = "Version minecraft";
+            Version.Visible = false;
             Version.Click += label3_Click;
             // 
             // version_mc
@@ -153,16 +161,8 @@
             version_mc.TabIndex = 10;
             version_mc.Text = "Choisir sa version";
             version_mc.UseVisualStyleBackColor = true;
-            // 
-            // checkedListBox1
-            // 
-            checkedListBox1.FormattingEnabled = true;
-            checkedListBox1.Items.AddRange(new object[] { "Vanilla", "Paper (plugins)", "Spigot (plugins)" });
-            checkedListBox1.Location = new Point(581, 167);
-            checkedListBox1.Name = "checkedListBox1";
-            checkedListBox1.Size = new Size(120, 58);
-            checkedListBox1.TabIndex = 11;
-            checkedListBox1.SelectedIndexChanged += checkedListBox1_SelectedIndexChanged;
+            version_mc.Visible = false;
+            version_mc.Click += version_mc_Click;
             // 
             // vanillacheck
             // 
@@ -173,6 +173,7 @@
             vanillacheck.TabIndex = 12;
             vanillacheck.Text = "Vanilla";
             vanillacheck.UseVisualStyleBackColor = true;
+            vanillacheck.Visible = false;
             vanillacheck.CheckedChanged += checkBox1_CheckedChanged;
             // 
             // Papercheck
@@ -186,15 +187,51 @@
             Papercheck.UseVisualStyleBackColor = true;
             Papercheck.CheckedChanged += Papercheck_CheckedChanged;
             // 
+            // un21onze
+            // 
+            un21onze.AutoSize = true;
+            un21onze.Location = new Point(532, 49);
+            un21onze.Name = "un21onze";
+            un21onze.Size = new Size(62, 19);
+            un21onze.TabIndex = 14;
+            un21onze.Text = "1.21.11";
+            un21onze.UseVisualStyleBackColor = true;
+            un21onze.Visible = false;
+            un21onze.CheckedChanged += checkBox1_CheckedChanged_1;
+            // 
+            // button_start
+            // 
+            button_start.Location = new Point(175, 151);
+            button_start.Name = "button_start";
+            button_start.Size = new Size(115, 23);
+            button_start.TabIndex = 15;
+            button_start.Text = "Démarrer";
+            button_start.UseVisualStyleBackColor = true;
+            button_start.Visible = false;
+            button_start.Click += button3_Click_1;
+            // 
+            // label_start
+            // 
+            label_start.AutoSize = true;
+            label_start.Location = new Point(11, 159);
+            label_start.Name = "label_start";
+            label_start.Size = new Size(109, 15);
+            label_start.TabIndex = 16;
+            label_start.Text = "Démarrer le serveur";
+            label_start.Visible = false;
+            label_start.Click += label3_Click_1;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(775, 336);
+            Controls.Add(label_start);
+            Controls.Add(button_start);
+            Controls.Add(un21onze);
             Controls.Add(Papercheck);
             Controls.Add(vanillacheck);
-            Controls.Add(checkedListBox1);
             Controls.Add(version_mc);
             Controls.Add(Version);
             Controls.Add(statutjdk);
@@ -229,8 +266,10 @@
         private Label statutjdk;
         private Label Version;
         private Button version_mc;
-        private CheckedListBox checkedListBox1;
         private CheckBox vanillacheck;
         private CheckBox Papercheck;
+        private CheckBox un21onze;
+        private Button button_start;
+        private Label label_start;
     }
 }
