@@ -14,6 +14,7 @@ namespace Dow_gui
         string chemin = "";
         string pathBat = "";
         string pathEula = "";
+        readonly string javapath = @"C:\Program Files\Java\latest\jdk-21\bin\java.exe";
 
 
         public Form1()
@@ -30,7 +31,7 @@ namespace Dow_gui
             else
             {
                 statutjdk.Text = "JDK 21 n'est pas installé";
-                button1.Text = "Installer";
+                button1.Text = "  Installer  ";
                 jdk21 = false;
                 label_jdk21.BackColor = Color.Red;
 
@@ -122,6 +123,8 @@ namespace Dow_gui
                 if (File.Exists(pathBat) && File.Exists(pathEula))
                 {
                     label_bat.BackColor = Color.LightGreen;
+                    button_bat.Text = "Installer";
+
                 }
                 else
                 {
@@ -150,7 +153,8 @@ namespace Dow_gui
                 /*Form2 form = new Form2();
                 form.ShowDialog();*/
 
-                //if 
+                label_bat.BackColor = Color.Yellow;
+
                 // EULA
                 //Console.WriteLine("Acceptation du EULA");
                 path = chemin;
@@ -162,14 +166,14 @@ namespace Dow_gui
                 cheminBat = Path.Combine(path, "start.bat");
 
                 contenuBat =
-                @"@echo off
+                $@"@echo off
 cd /d %~dp0
-java -Xmx4G -jar server.jar nogui
+""{javapath}"" -Xmx4G -jar server.jar nogui
 pause";
 
                 File.WriteAllText(cheminBat, contenuBat);
 
-                Console.WriteLine("Fichier .bat créé avec succès !");
+                label_bat.BackColor = Color.LightGreen;
             }
 
         }
@@ -177,6 +181,58 @@ pause";
         private void label2_Click_1(object sender, EventArgs e)
         {
 
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (checkedListBox1.GetItemChecked(0))
+            {
+                version_mc.Text = "Paper";
+            }
+            else if (checkedListBox1.GetItemChecked(1))
+            {
+                version_mc.Text = "Spigot";
+            }
+            else
+            {
+                version_mc.Text = "Choisir sa version";
+            }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (vanillacheck.Checked)
+            {
+                version_mc.Text = "Vanilla";
+                Papercheck.Checked = false;
+            }
+            else if (!vanillacheck.Checked && !Papercheck.Checked)
+            {
+                version_mc.Text = "Choisir sa version";
+            }
+        }
+
+        private void Papercheck_CheckedChanged(object sender, EventArgs e)
+        {
+            if (Papercheck.Checked)
+            {
+                version_mc.Text = "Paper";
+                vanillacheck.Checked = false;
+            }
+            else if (!vanillacheck.Checked && !Papercheck.Checked)
+            {
+                version_mc.Text = "Choisir sa version";
+            }
         }
     }
 }
