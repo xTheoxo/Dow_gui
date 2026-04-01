@@ -130,19 +130,20 @@ namespace Dow_gui
                 pathEula = Path.Combine(chemin, "eula.txt");
                 pathjar = Path.Combine(chemin, "server.jar");
 
+                label_bat.Visible = true;
+                button_bat.Visible = true;
+
+                Version.Visible = true;
+                version_mc.Visible = true;
+
+                label_start.Visible = true;
+                button_start.Visible = true;
+
                 if (File.Exists(pathBat) && File.Exists(pathEula))
                 {
                     label_bat.BackColor = Color.LightGreen;
                     button_bat.Text = "Installer";
 
-                    label_bat.Visible = true;
-                    button_bat.Visible = true;
-
-                    Version.Visible = true;
-                    version_mc.Visible = true;
-
-                    label_start.Visible = true;
-                    button_start.Visible = true;
                 }
                 else
                 {
@@ -194,7 +195,8 @@ namespace Dow_gui
                 contenuBat =
                 $@"@echo off
 cd /d %~dp0
-java -Xmx4G -jar server.jar nogui";
+java -Xmx4G -jar server.jar nogui
+pause";
 
                 File.WriteAllText(cheminBat, contenuBat);
 
@@ -281,6 +283,7 @@ java -Xmx4G -jar server.jar nogui";
             //Console.WriteLine("Téléchargement de la version " + choixVersion);
 
             // Le met dans le dossier créé précédement et le renomme en server.jar
+            Version.BackColor = Color.Yellow;
             cheminJar = Path.Combine(path, "server.jar");
 
             // Voir doc Microsoft > HttpClient
@@ -298,7 +301,11 @@ java -Xmx4G -jar server.jar nogui";
 
         private void button3_Click_1(object sender, EventArgs e)
         {
+            label_start.BackColor = Color.Yellow;
 
+            Process.Start("powershell", "cd '" + path + "' ; start start.bat");
+            
+            label_start.BackColor = Color.LightGreen;
         }
 
         private void label3_Click_1(object sender, EventArgs e)
