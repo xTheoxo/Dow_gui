@@ -34,22 +34,22 @@ namespace Dow_gui
         {
             InitializeComponent();
 
-
             if (Path.Exists("C:/Program Files/Java/latest/jdk-21"))
             {
                 button1.Text = "Installer";
-                
+
                 label_jdk21.BackColor = Color.LightGreen;
                 statutjdk.Text = "JDK 21 est installé";
             }
             else
             {
                 statutjdk.Text = "JDK 21 n'est pas installé";
-                
+
                 label_jdk21.BackColor = Color.Red;
 
             }
             label_Dossier_serv.BackColor = Color.Red;
+            
 
         }
 
@@ -59,8 +59,6 @@ namespace Dow_gui
             {
                 MessageBox.Show("Le jdk 21 est déja installé");
                 statutjdk.Text = "JDK 21 est installé";
-
-
             }
             else
             {
@@ -69,7 +67,7 @@ namespace Dow_gui
                 statutjdk.Text = "En cours d'installation...";
 
                 // Le met dans le dossier créé précédement et le renomme en jdk-21.exe
-                cheminJar = Path.Combine(path, "jdk-21.exe");
+                cheminJar = Path.Combine(chemin, "jdk-21.exe");
 
                 // Voir doc Microsoft > HttpClient
                 using (HttpClient client = new HttpClient())
@@ -86,7 +84,7 @@ namespace Dow_gui
                 // Installation du JDK
                 ProcessStartInfo psi = new ProcessStartInfo
                 {
-                    FileName = path + "/" + "jdk-21.exe",
+                    FileName = chemin + "/" + "jdk-21.exe",
                     Arguments = "/s",
                     Verb = "runas", // demande admin
                     UseShellExecute = true
@@ -94,15 +92,22 @@ namespace Dow_gui
 
                 Process process = Process.Start(psi);
 
+
+                // Supprime le fichier d'installation après l'installation du JDK
                 if (process != null)
                 {
                     process.WaitForExit(); // Attend la fin de l'installation
 
                     Console.WriteLine("Installation terminée !");
-                    File.Delete(path + "/" + "jdk-21.exe");
+                    File.Delete(chemin + "/" + "jdk-21.exe");
                 }
                 statutjdk.Text = "JDK 21 est installé";
                 label_jdk21.BackColor = Color.LightGreen;
+            }
+            if (File.Exists(pathBat) && File.Exists(pathEula) && (File.Exists(pathjar)))
+            {
+                label_start.Visible = true;
+                button_start.Visible = true;
             }
         }
 
@@ -135,27 +140,37 @@ namespace Dow_gui
 
                 Version.Visible = true;
                 version_mc.Visible = true;
+                label_version.Visible = true;
 
-                label_start.Visible = true;
-                button_start.Visible = true;
+
 
                 if (File.Exists(pathBat) && File.Exists(pathEula))
                 {
                     label_bat.BackColor = Color.LightGreen;
                     button_bat.Text = "Installer";
-
                 }
                 else
                 {
                     label_bat.BackColor = Color.Red;
+
+                    label_start.Visible = false;
+                    button_start.Visible = false;
                 }
                 if (File.Exists(pathjar))
-                {
+                { 
                     Version.BackColor = Color.LightGreen;
+                    label_version.Text = "Déja installé";
                 }
                 else
                 {
-                    Version.BackColor = Color.Red;
+                    label_version.Text = "Non installé";
+                Version.BackColor = Color.Red;
+                }
+
+                if (File.Exists(pathBat) && File.Exists(pathEula) && (File.Exists(pathjar)))
+                {
+                    label_start.Visible = true;
+                    button_start.Visible = true;
                 }
             }
         }
@@ -171,40 +186,38 @@ namespace Dow_gui
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (chemin == "")
-            {
-                MessageBox.Show("Veuillez sélectionner un dossier pour le serveur avant de continuer.");
-            }
-            else
-            {
-                /*Form2 form = new Form2();
-                form.ShowDialog();*/
 
-                label_bat.BackColor = Color.Yellow;
+            /*Form2 form = new Form2();
+            form.ShowDialog();*/
 
-                // EULA
-                //Console.WriteLine("Acceptation du EULA");
-                path = chemin;
-                cheminEula = Path.Combine(path, "eula.txt");
-                contenuEula = @"eula=true";
-                File.WriteAllText(cheminEula, contenuEula);
+            label_bat.BackColor = Color.Yellow;
 
-                //Console.WriteLine("Création du fichier start.bat");
-                cheminBat = Path.Combine(path, "start.bat");
+            // EULA
+            path = chemin;
+            cheminEula = Path.Combine(chemin, "eula.txt");
+            contenuEula = @"eula=true";
+            File.WriteAllText(cheminEula, contenuEula);
 
-                contenuBat =
-                $@"@echo off
+            //Console.WriteLine("Création du fichier start.bat");
+            cheminBat = Path.Combine(chemin, "start.bat");
+
+            contenuBat =
+            $@"@echo off
 cd /d %~dp0
 java -Xmx4G -jar server.jar nogui
 pause";
 
-                File.WriteAllText(cheminBat, contenuBat);
+            File.WriteAllText(cheminBat, contenuBat);
 
-                label_bat.BackColor = Color.LightGreen;
+            label_bat.BackColor = Color.LightGreen;
 
 
+            
+            if (File.Exists(pathBat) && File.Exists(pathEula) && (File.Exists(pathjar)))
+            {
+                label_start.Visible = true;
+                button_start.Visible = true;
             }
-
         }
 
         private void label2_Click_1(object sender, EventArgs e)
@@ -284,7 +297,8 @@ pause";
 
             // Le met dans le dossier créé précédement et le renomme en server.jar
             Version.BackColor = Color.Yellow;
-            cheminJar = Path.Combine(path, "server.jar");
+            label_version.Text = "En cours d'installation...";
+            cheminJar = Path.Combine(chemin, "server.jar");
 
             // Voir doc Microsoft > HttpClient
             using (HttpClient client = new HttpClient())
@@ -297,18 +311,52 @@ pause";
                     await response.Content.CopyToAsync(fs);
                 }
             }
+            Version.BackColor = Color.LightGreen;
+            label_version.Text = "Installé";
+
+
+            if (File.Exists(pathBat) && File.Exists(pathEula) && (File.Exists(pathjar)))
+            {
+                label_start.Visible = true;
+                button_start.Visible = true;
+            }
         }
 
         private void button3_Click_1(object sender, EventArgs e)
         {
-            label_start.BackColor = Color.Yellow;
+            if (File.Exists(pathBat) && File.Exists(pathEula) && (File.Exists(pathjar)))
+            {
+                label_start.BackColor = Color.Yellow;
 
-            Process.Start("powershell", "cd '" + path + "' ; start start.bat");
-            
-            label_start.BackColor = Color.LightGreen;
+                ProcessStartInfo psi = new ProcessStartInfo
+                {
+                    FileName = "start.bat",
+                    WorkingDirectory = chemin,
+                    UseShellExecute = true
+                };
+
+                Process.Start(psi);
+
+                label_start.BackColor = Color.LightGreen;
+            }
+            else
+            {
+                MessageBox.Show("Veuillez installer le bat et le jdk et n'oublier pas de sélectionner votre version minecraft");
+            }
+
         }
 
         private void label3_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void statutjdk_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click_2(object sender, EventArgs e)
         {
 
         }

@@ -46,14 +46,16 @@
             un21onze = new CheckBox();
             button_start = new Button();
             label_start = new Label();
+            label_version = new Label();
             SuspendLayout();
             // 
             // button1
             // 
             button1.BackColor = Color.Transparent;
-            button1.Location = new Point(199, 33);
+            button1.Location = new Point(174, 25);
+            button1.Margin = new Padding(3, 2, 3, 2);
             button1.Name = "button1";
-            button1.Size = new Size(133, 29);
+            button1.Size = new Size(116, 22);
             button1.TabIndex = 0;
             button1.Text = "Installer";
             button1.UseVisualStyleBackColor = false;
@@ -64,9 +66,9 @@
             // 
             label_jdk21.AutoSize = true;
             label_jdk21.BackColor = Color.Red;
-            label_jdk21.Location = new Point(29, 39);
+            label_jdk21.Location = new Point(25, 29);
             label_jdk21.Name = "label_jdk21";
-            label_jdk21.Size = new Size(65, 20);
+            label_jdk21.Size = new Size(50, 15);
             label_jdk21.TabIndex = 1;
             label_jdk21.Text = "  jdk 21  ";
             label_jdk21.Visible = false;
@@ -74,9 +76,9 @@
             // label_bat
             // 
             label_bat.AutoSize = true;
-            label_bat.Location = new Point(39, 88);
+            label_bat.Location = new Point(34, 66);
             label_bat.Name = "label_bat";
-            label_bat.Size = new Size(47, 20);
+            label_bat.Size = new Size(36, 15);
             label_bat.TabIndex = 2;
             label_bat.Text = "  Bat  ";
             label_bat.Visible = false;
@@ -84,9 +86,10 @@
             // 
             // button2
             // 
-            button2.Location = new Point(199, 121);
+            button2.Location = new Point(174, 91);
+            button2.Margin = new Padding(3, 2, 3, 2);
             button2.Name = "button2";
-            button2.Size = new Size(134, 29);
+            button2.Size = new Size(117, 22);
             button2.TabIndex = 3;
             button2.Text = "Choisir un dossier";
             button2.UseVisualStyleBackColor = true;
@@ -94,26 +97,27 @@
             // 
             // label1
             // 
-            label1.Location = new Point(681, 240);
+            label1.Location = new Point(596, 180);
             label1.Name = "label1";
-            label1.Size = new Size(101, 23);
+            label1.Size = new Size(88, 17);
             label1.TabIndex = 0;
             // 
             // label_Dossier_serv
             // 
             label_Dossier_serv.AutoSize = true;
-            label_Dossier_serv.Location = new Point(13, 127);
+            label_Dossier_serv.Location = new Point(11, 95);
             label_Dossier_serv.Name = "label_Dossier_serv";
-            label_Dossier_serv.Size = new Size(125, 20);
+            label_Dossier_serv.Size = new Size(98, 15);
             label_Dossier_serv.TabIndex = 5;
             label_Dossier_serv.Text = "  Dossier serveur  ";
             label_Dossier_serv.Click += label_Dossier_serv_Click;
             // 
             // button_bat
             // 
-            button_bat.Location = new Point(199, 79);
+            button_bat.Location = new Point(174, 59);
+            button_bat.Margin = new Padding(3, 2, 3, 2);
             button_bat.Name = "button_bat";
-            button_bat.Size = new Size(134, 29);
+            button_bat.Size = new Size(117, 22);
             button_bat.TabIndex = 6;
             button_bat.Text = "Aucun dossier";
             button_bat.UseVisualStyleBackColor = true;
@@ -123,28 +127,29 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(359, 131);
+            label2.Location = new Point(314, 98);
             label2.Name = "label2";
-            label2.Size = new Size(0, 20);
+            label2.Size = new Size(0, 15);
             label2.TabIndex = 7;
             label2.Click += label2_Click_1;
             // 
             // statutjdk
             // 
             statutjdk.AutoSize = true;
-            statutjdk.Location = new Point(370, 33);
+            statutjdk.Location = new Point(324, 25);
             statutjdk.Name = "statutjdk";
-            statutjdk.Size = new Size(50, 20);
+            statutjdk.Size = new Size(38, 15);
             statutjdk.TabIndex = 8;
             statutjdk.Text = "label3";
             statutjdk.Visible = false;
+            statutjdk.Click += statutjdk_Click;
             // 
             // Version
             // 
             Version.AutoSize = true;
-            Version.Location = new Point(13, 168);
+            Version.Location = new Point(11, 126);
             Version.Name = "Version";
-            Version.Size = new Size(124, 20);
+            Version.Size = new Size(99, 15);
             Version.TabIndex = 9;
             Version.Text = "Version minecraft";
             Version.Visible = false;
@@ -152,10 +157,9 @@
             // 
             // version_mc
             // 
-            version_mc.Location = new Point(200, 163);
-            version_mc.Margin = new Padding(3, 4, 3, 4);
+            version_mc.Location = new Point(175, 122);
             version_mc.Name = "version_mc";
-            version_mc.Size = new Size(133, 31);
+            version_mc.Size = new Size(116, 23);
             version_mc.TabIndex = 10;
             version_mc.Text = "Choisir sa version";
             version_mc.UseVisualStyleBackColor = true;
@@ -165,10 +169,9 @@
             // vanillacheck
             // 
             vanillacheck.AutoSize = true;
-            vanillacheck.Location = new Point(533, 32);
-            vanillacheck.Margin = new Padding(3, 4, 3, 4);
+            vanillacheck.Location = new Point(466, 24);
             vanillacheck.Name = "vanillacheck";
-            vanillacheck.Size = new Size(75, 24);
+            vanillacheck.Size = new Size(60, 19);
             vanillacheck.TabIndex = 12;
             vanillacheck.Text = "Vanilla";
             vanillacheck.UseVisualStyleBackColor = true;
@@ -178,10 +181,9 @@
             // Papercheck
             // 
             Papercheck.AutoSize = true;
-            Papercheck.Location = new Point(608, 32);
-            Papercheck.Margin = new Padding(3, 4, 3, 4);
+            Papercheck.Location = new Point(532, 24);
             Papercheck.Name = "Papercheck";
-            Papercheck.Size = new Size(68, 24);
+            Papercheck.Size = new Size(56, 19);
             Papercheck.TabIndex = 13;
             Papercheck.Text = "Paper";
             Papercheck.UseVisualStyleBackColor = true;
@@ -190,10 +192,9 @@
             // un21onze
             // 
             un21onze.AutoSize = true;
-            un21onze.Location = new Point(608, 65);
-            un21onze.Margin = new Padding(3, 4, 3, 4);
+            un21onze.Location = new Point(532, 49);
             un21onze.Name = "un21onze";
-            un21onze.Size = new Size(77, 24);
+            un21onze.Size = new Size(62, 19);
             un21onze.TabIndex = 14;
             un21onze.Text = "1.21.11";
             un21onze.UseVisualStyleBackColor = true;
@@ -202,10 +203,9 @@
             // 
             // button_start
             // 
-            button_start.Location = new Point(199, 207);
-            button_start.Margin = new Padding(3, 4, 3, 4);
+            button_start.Location = new Point(174, 155);
             button_start.Name = "button_start";
-            button_start.Size = new Size(134, 31);
+            button_start.Size = new Size(117, 23);
             button_start.TabIndex = 15;
             button_start.Text = "Démarrer";
             button_start.UseVisualStyleBackColor = true;
@@ -215,20 +215,32 @@
             // label_start
             // 
             label_start.AutoSize = true;
-            label_start.Location = new Point(13, 212);
+            label_start.Location = new Point(11, 159);
             label_start.Name = "label_start";
-            label_start.Size = new Size(139, 20);
+            label_start.Size = new Size(109, 15);
             label_start.TabIndex = 16;
             label_start.Text = "Démarrer le serveur";
             label_start.Visible = false;
             label_start.Click += label3_Click_1;
             // 
+            // label_version
+            // 
+            label_version.AutoSize = true;
+            label_version.Location = new Point(325, 131);
+            label_version.Name = "label_version";
+            label_version.Size = new Size(38, 15);
+            label_version.TabIndex = 17;
+            label_version.Text = "label3";
+            label_version.Visible = false;
+            label_version.Click += label3_Click_2;
+            // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(886, 448);
+            ClientSize = new Size(775, 336);
+            Controls.Add(label_version);
             Controls.Add(label_start);
             Controls.Add(button_start);
             Controls.Add(un21onze);
@@ -246,6 +258,7 @@
             Controls.Add(label_jdk21);
             Controls.Add(button1);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(3, 2, 3, 2);
             Name = "Form1";
             Text = "Dow";
             Load += Form1_Load;
@@ -272,5 +285,6 @@
         private CheckBox un21onze;
         private Button button_start;
         private Label label_start;
+        private Label label_version;
     }
 }
