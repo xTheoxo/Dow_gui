@@ -284,11 +284,13 @@ pause";
         {
             if (un21onze.Checked)
             {
-                version_mc.Text = "Paper 1.21.11";
+
+                un20un.Checked = false;
                 label_jdk21.Visible = true;
                 button1.Visible = true;
                 statutjdk.Visible = true;
                 version = version_choix["Paper 1.21.11"].link;
+                version_mc.Text = "Paper 1.21.11";
             }
             else
             {
@@ -298,7 +300,6 @@ pause";
                 statutjdk.Visible = false;
                 version_mc.Text = "Choisir sa version";
             }
-
         }
 
         private async void version_mc_Click(object sender, EventArgs e)
@@ -306,7 +307,6 @@ pause";
             if (version != "")
             {
                 //url = version_choix[choixVersion];
-                //Console.WriteLine("Téléchargement de la version " + choixVersion);
 
                 // Le met dans le dossier créé précédement et le renomme en server.jar
                 Version.BackColor = Color.Yellow;
@@ -408,11 +408,12 @@ pause";
         {
             if (un20un.Checked)
             {
-                version_mc.Text = "Paper 1.20.1";
+                un21onze.Checked = false;
                 label_jdk21.Visible = true;
                 button1.Visible = true;
                 statutjdk.Visible = true;
                 version = version_choix["Paper 1.20.1"].link;
+                version_mc.Text = "Paper 1.20.1";
             }
             else
             {
@@ -422,6 +423,11 @@ pause";
                 statutjdk.Visible = false;
                 version_mc.Text = "Choisir sa version";
             }
+        }
+
+        private void button3_Click_2(object sender, EventArgs e)
+        {
+            return;
         }
     }
 }
