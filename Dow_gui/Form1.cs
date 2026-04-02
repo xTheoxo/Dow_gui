@@ -49,7 +49,7 @@ namespace Dow_gui
 
             }
             label_Dossier_serv.BackColor = Color.Red;
-            
+
 
         }
 
@@ -157,14 +157,14 @@ namespace Dow_gui
                     button_start.Visible = false;
                 }
                 if (File.Exists(pathjar))
-                { 
+                {
                     Version.BackColor = Color.LightGreen;
                     label_version.Text = "Déja installé";
                 }
                 else
                 {
                     label_version.Text = "Non installé";
-                Version.BackColor = Color.Red;
+                    Version.BackColor = Color.Red;
                 }
 
                 if (File.Exists(pathBat) && File.Exists(pathEula) && (File.Exists(pathjar)))
@@ -212,7 +212,7 @@ pause";
             label_bat.BackColor = Color.LightGreen;
 
 
-            
+
             if (File.Exists(pathBat) && File.Exists(pathEula) && (File.Exists(pathjar)))
             {
                 label_start.Visible = true;
@@ -259,16 +259,15 @@ pause";
         {
             if (Papercheck.Checked)
             {
-                version_mc.Text = "Paper";
                 vanillacheck.Checked = false;
-                un21onze.Visible = true;
+                un21x.Visible = true;
             }
             else if (!vanillacheck.Checked && !Papercheck.Checked)
             {
-                version_mc.Text = "Choisir sa version";
                 un21onze.Visible = false;
                 un21onze.Checked = false;
-
+                un21x.Visible = false;
+                un21x.Checked = false;
             }
 
         }
@@ -277,6 +276,7 @@ pause";
         {
             if (un21onze.Checked)
             {
+                version_mc.Text = "Paper 1.21.11";
                 label_jdk21.Visible = true;
                 button1.Visible = true;
                 statutjdk.Visible = true;
@@ -286,6 +286,7 @@ pause";
                 label_jdk21.Visible = false;
                 button1.Visible = false;
                 statutjdk.Visible = false;
+                version_mc.Text = "Choisir sa version";
             }
 
         }
@@ -357,6 +358,24 @@ pause";
         }
 
         private void label3_Click_2(object sender, EventArgs e)
+        {
+
+        }
+
+        private void un21x_CheckedChanged(object sender, EventArgs e)
+        {
+            if (un21x.Checked)
+            {
+                un21onze.Visible = true; ;
+            }
+            else
+            {
+                un21onze.Visible = false;
+                un21onze.Checked = false;
+            }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }
