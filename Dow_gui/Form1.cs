@@ -15,7 +15,7 @@ namespace Dow_gui
         string pathBat = "";
         string pathEula = "";
         string pathjar = "";
-        string version = "https://fill-data.papermc.io/v1/objects/da497e12b43e5b61c5df150e4bfd0de0f53043e57d2ac98dd59289ee9da4ad68/paper-1.21.11-127.jar";
+        string version = "";
         string choixVersion = "";
 
 
@@ -27,6 +27,13 @@ namespace Dow_gui
                 { "25", ("C:/Program Files/Java/latest/jdk-25", "https://download.oracle.com/java/21/latest/jdk-25_windows-x64_bin.exe") }
             };
 
+        Dictionary<string, (string link, string somme)> version_choix = new Dictionary<string, (string link, string somme)>()
+        {
+            //{ "Paper 26.1.1", "https://fill-data.papermc.io/v1/objects/da497e12b43e5b61c5df150e4bfd0de0f53043e57d2ac98dd59289ee9da4ad68/paper-1.21.12-128.jar" },
+            { "Paper 1.21.11", ("https://fill-data.papermc.io/v1/objects/da497e12b43e5b61c5df150e4bfd0de0f53043e57d2ac98dd59289ee9da4ad68/paper-1.21.11-127.jar","test") },
+            { "Paper 1.20.1", ("https://fill-data.papermc.io/v1/objects/234a9b32098100c6fc116664d64e36ccdb58b5b649af0f80bcccb08b0255eaea/paper-1.20.1-196.jar","test") }
+
+        };
 
 
 
@@ -268,6 +275,7 @@ pause";
                 un21onze.Checked = false;
                 un21x.Visible = false;
                 un21x.Checked = false;
+                version = "";
             }
 
         }
@@ -280,9 +288,11 @@ pause";
                 label_jdk21.Visible = true;
                 button1.Visible = true;
                 statutjdk.Visible = true;
+                version = version_choix["Paper 1.21.11"].link;
             }
             else
             {
+                version = "";
                 label_jdk21.Visible = false;
                 button1.Visible = false;
                 statutjdk.Visible = false;
@@ -293,33 +303,40 @@ pause";
 
         private async void version_mc_Click(object sender, EventArgs e)
         {
-            //url = version_choix[choixVersion];
-            //Console.WriteLine("Téléchargement de la version " + choixVersion);
-
-            // Le met dans le dossier créé précédement et le renomme en server.jar
-            Version.BackColor = Color.Yellow;
-            label_version.Text = "En cours d'installation...";
-            cheminJar = Path.Combine(chemin, "server.jar");
-
-            // Voir doc Microsoft > HttpClient
-            using (HttpClient client = new HttpClient())
-            using (HttpResponseMessage response = await client.GetAsync(version))
+            if (version != "")
             {
-                response.EnsureSuccessStatusCode();
+                //url = version_choix[choixVersion];
+                //Console.WriteLine("Téléchargement de la version " + choixVersion);
 
-                using (FileStream fs = new FileStream(cheminJar, FileMode.Create))
+                // Le met dans le dossier créé précédement et le renomme en server.jar
+                Version.BackColor = Color.Yellow;
+                label_version.Text = "En cours d'installation...";
+                cheminJar = Path.Combine(chemin, "server.jar");
+
+                // Voir doc Microsoft > HttpClient
+                using (HttpClient client = new HttpClient())
+                using (HttpResponseMessage response = await client.GetAsync(version))
                 {
-                    await response.Content.CopyToAsync(fs);
+                    response.EnsureSuccessStatusCode();
+
+                    using (FileStream fs = new FileStream(cheminJar, FileMode.Create))
+                    {
+                        await response.Content.CopyToAsync(fs);
+                    }
+                }
+                Version.BackColor = Color.LightGreen;
+                label_version.Text = "Installé";
+
+
+                if (File.Exists(pathBat) && File.Exists(pathEula) && (File.Exists(pathjar)))
+                {
+                    label_start.Visible = true;
+                    button_start.Visible = true;
                 }
             }
-            Version.BackColor = Color.LightGreen;
-            label_version.Text = "Installé";
-
-
-            if (File.Exists(pathBat) && File.Exists(pathEula) && (File.Exists(pathjar)))
+            else
             {
-                label_start.Visible = true;
-                button_start.Visible = true;
+                MessageBox.Show("Veuillez sélectionner une version de minecraft");
             }
         }
 
@@ -367,17 +384,44 @@ pause";
             if (un21x.Checked)
             {
                 un21onze.Visible = true; ;
+
+                un20un.Visible = true;
             }
             else
             {
                 un21onze.Visible = false;
                 un21onze.Checked = false;
+
+                un20un.Visible = false;
+                un20un.Checked = false;
+
+                version = "";
             }
         }
 
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void checkBox1_CheckedChanged_2(object sender, EventArgs e)
+        {
+            if (un20un.Checked)
+            {
+                version_mc.Text = "Paper 1.20.1";
+                label_jdk21.Visible = true;
+                button1.Visible = true;
+                statutjdk.Visible = true;
+                version = version_choix["Paper 1.20.1"].link;
+            }
+            else
+            {
+                version = "";
+                label_jdk21.Visible = false;
+                button1.Visible = false;
+                statutjdk.Visible = false;
+                version_mc.Text = "Choisir sa version";
+            }
         }
     }
 }
