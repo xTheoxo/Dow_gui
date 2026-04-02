@@ -27,12 +27,20 @@ namespace Dow_gui
                 { "25", ("C:/Program Files/Java/latest/jdk-25", "https://download.oracle.com/java/21/latest/jdk-25_windows-x64_bin.exe") }
             };
 
-        Dictionary<string, (string link, string somme)> version_choix = new Dictionary<string, (string link, string somme)>()
+        Dictionary<string, (string link, string somme)> version_choix_paper = new Dictionary<string, (string link, string somme)>()
         {
             //{ "Paper 26.1.1", "https://fill-data.papermc.io/v1/objects/da497e12b43e5b61c5df150e4bfd0de0f53043e57d2ac98dd59289ee9da4ad68/paper-1.21.12-128.jar" },
+
             { "Paper 1.21.11", ("https://fill-data.papermc.io/v1/objects/da497e12b43e5b61c5df150e4bfd0de0f53043e57d2ac98dd59289ee9da4ad68/paper-1.21.11-127.jar","test") },
             { "Paper 1.20.1", ("https://fill-data.papermc.io/v1/objects/234a9b32098100c6fc116664d64e36ccdb58b5b649af0f80bcccb08b0255eaea/paper-1.20.1-196.jar","test") }
+        };
 
+        Dictionary<string, (string link, string somme)> version_choix_vanilla = new Dictionary<string, (string link, string somme)>()
+        {
+            //{ "Paper 26.1.1", "https://fill-data.papermc.io/v1/objects/da497e12b43e5b61c5df150e4bfd0de0f53043e57d2ac98dd59289ee9da4ad68/paper-1.21.12-128.jar" },
+
+            { "Vanilla 1.21.11", ("...","test") },
+            { "Vanilla 1.20.1", ("...","test") }
         };
 
 
@@ -289,7 +297,7 @@ pause";
                 label_jdk21.Visible = true;
                 button1.Visible = true;
                 statutjdk.Visible = true;
-                version = version_choix["Paper 1.21.11"].link;
+                version = version_choix_paper["Paper 1.21.11"].link;
                 version_mc.Text = "Paper 1.21.11";
             }
             else
@@ -412,7 +420,7 @@ pause";
                 label_jdk21.Visible = true;
                 button1.Visible = true;
                 statutjdk.Visible = true;
-                version = version_choix["Paper 1.20.1"].link;
+                version = version_choix_paper["Paper 1.20.1"].link;
                 version_mc.Text = "Paper 1.20.1";
             }
             else
