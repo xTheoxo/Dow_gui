@@ -43,12 +43,18 @@
             version_mc = new Button();
             vanillacheck = new CheckBox();
             Papercheck = new CheckBox();
-            un21onze = new CheckBox();
+            un21onzepaper = new CheckBox();
             button_start = new Button();
             label_start = new Label();
             label_version = new Label();
             un21x = new CheckBox();
-            un20un = new CheckBox();
+            un20unpaper = new CheckBox();
+            button3 = new Button();
+            un20x = new CheckBox();
+            un20depaper = new CheckBox();
+            un20quatrepaper = new CheckBox();
+            un20cinqpaper = new CheckBox();
+            un20sixpaper = new CheckBox();
             SuspendLayout();
             // 
             // button1
@@ -99,7 +105,7 @@
             // 
             // label1
             // 
-            label1.Location = new Point(741, 316);
+            label1.Location = new Point(1034, 546);
             label1.Name = "label1";
             label1.Size = new Size(31, 17);
             label1.TabIndex = 0;
@@ -173,7 +179,7 @@
             // vanillacheck
             // 
             vanillacheck.AutoSize = true;
-            vanillacheck.Location = new Point(466, 24);
+            vanillacheck.Location = new Point(525, 30);
             vanillacheck.Name = "vanillacheck";
             vanillacheck.Size = new Size(60, 19);
             vanillacheck.TabIndex = 12;
@@ -185,7 +191,7 @@
             // Papercheck
             // 
             Papercheck.AutoSize = true;
-            Papercheck.Location = new Point(532, 24);
+            Papercheck.Location = new Point(860, 28);
             Papercheck.Name = "Papercheck";
             Papercheck.Size = new Size(56, 19);
             Papercheck.TabIndex = 13;
@@ -193,17 +199,17 @@
             Papercheck.UseVisualStyleBackColor = true;
             Papercheck.CheckedChanged += Papercheck_CheckedChanged;
             // 
-            // un21onze
+            // un21onzepaper
             // 
-            un21onze.AutoSize = true;
-            un21onze.Location = new Point(619, 75);
-            un21onze.Name = "un21onze";
-            un21onze.Size = new Size(62, 19);
-            un21onze.TabIndex = 14;
-            un21onze.Text = "1.21.11";
-            un21onze.UseVisualStyleBackColor = true;
-            un21onze.Visible = false;
-            un21onze.CheckedChanged += checkBox1_CheckedChanged_1;
+            un21onzepaper.AutoSize = true;
+            un21onzepaper.Location = new Point(926, 77);
+            un21onzepaper.Name = "un21onzepaper";
+            un21onzepaper.Size = new Size(62, 19);
+            un21onzepaper.TabIndex = 14;
+            un21onzepaper.Text = "1.21.11";
+            un21onzepaper.UseVisualStyleBackColor = true;
+            un21onzepaper.Visible = false;
+            un21onzepaper.CheckedChanged += checkBox1_CheckedChanged_1;
             // 
             // button_start
             // 
@@ -241,7 +247,7 @@
             // un21x
             // 
             un21x.AutoSize = true;
-            un21x.Location = new Point(532, 48);
+            un21x.Location = new Point(926, 53);
             un21x.Margin = new Padding(3, 2, 3, 2);
             un21x.Name = "un21x";
             un21x.Size = new Size(52, 19);
@@ -251,30 +257,108 @@
             un21x.Visible = false;
             un21x.CheckedChanged += un21x_CheckedChanged;
             // 
-            // un20un
+            // un20unpaper
             // 
-            un20un.AutoSize = true;
-            un20un.Location = new Point(531, 75);
-            un20un.Name = "un20un";
-            un20un.Size = new Size(56, 19);
-            un20un.TabIndex = 19;
-            un20un.Text = "1.20.1";
-            un20un.UseVisualStyleBackColor = true;
-            un20un.Visible = false;
-            un20un.CheckedChanged += checkBox1_CheckedChanged_2;
+            un20unpaper.AutoSize = true;
+            un20unpaper.Location = new Point(805, 78);
+            un20unpaper.Name = "un20unpaper";
+            un20unpaper.Size = new Size(56, 19);
+            un20unpaper.TabIndex = 19;
+            un20unpaper.Text = "1.20.1";
+            un20unpaper.UseVisualStyleBackColor = true;
+            un20unpaper.Visible = false;
+            un20unpaper.CheckedChanged += checkBox1_CheckedChanged_2;
+            // 
+            // button3
+            // 
+            button3.Location = new Point(12, 186);
+            button3.Name = "button3";
+            button3.Size = new Size(278, 23);
+            button3.TabIndex = 20;
+            button3.Text = "Option";
+            button3.UseVisualStyleBackColor = true;
+            button3.Visible = false;
+            button3.Click += button3_Click_3;
+            // 
+            // un20x
+            // 
+            un20x.AutoSize = true;
+            un20x.Location = new Point(805, 53);
+            un20x.Name = "un20x";
+            un20x.Size = new Size(52, 19);
+            un20x.TabIndex = 21;
+            un20x.Text = "1.20x";
+            un20x.UseVisualStyleBackColor = true;
+            un20x.Visible = false;
+            un20x.CheckedChanged += checkBox1_CheckedChanged_3;
+            // 
+            // un20depaper
+            // 
+            un20depaper.AutoSize = true;
+            un20depaper.Location = new Point(805, 102);
+            un20depaper.Name = "un20depaper";
+            un20depaper.Size = new Size(56, 19);
+            un20depaper.TabIndex = 22;
+            un20depaper.Text = "1.20.2";
+            un20depaper.UseVisualStyleBackColor = true;
+            un20depaper.Visible = false;
+            un20depaper.CheckedChanged += un20depaper_CheckedChanged;
+            // 
+            // un20quatrepaper
+            // 
+            un20quatrepaper.AutoSize = true;
+            un20quatrepaper.Location = new Point(805, 127);
+            un20quatrepaper.Name = "un20quatrepaper";
+            un20quatrepaper.Size = new Size(56, 19);
+            un20quatrepaper.TabIndex = 24;
+            un20quatrepaper.Text = "1.20.4";
+            un20quatrepaper.UseVisualStyleBackColor = true;
+            un20quatrepaper.Visible = false;
+            un20quatrepaper.CheckedChanged += un20quatrepaper_CheckedChanged;
+            // 
+            // un20cinqpaper
+            // 
+            un20cinqpaper.AutoSize = true;
+            un20cinqpaper.Location = new Point(806, 152);
+            un20cinqpaper.Name = "un20cinqpaper";
+            un20cinqpaper.Size = new Size(56, 19);
+            un20cinqpaper.TabIndex = 25;
+            un20cinqpaper.Text = "1.20.5";
+            un20cinqpaper.UseVisualStyleBackColor = true;
+            un20cinqpaper.Visible = false;
+            un20cinqpaper.CheckedChanged += un20cinqpaper_CheckedChanged;
+            // 
+            // un20sixpaper
+            // 
+            un20sixpaper.AutoSize = true;
+            un20sixpaper.Location = new Point(806, 177);
+            un20sixpaper.Name = "un20sixpaper";
+            un20sixpaper.Size = new Size(56, 19);
+            un20sixpaper.TabIndex = 26;
+            un20sixpaper.Text = "1.20.6";
+            un20sixpaper.UseVisualStyleBackColor = true;
+            un20sixpaper.Visible = false;
+            un20sixpaper.CheckedChanged += checkBox5_CheckedChanged;
             // 
             // Form1
             // 
+            AllowDrop = true;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(775, 336);
-            Controls.Add(un20un);
+            ClientSize = new Size(1077, 572);
+            Controls.Add(un20sixpaper);
+            Controls.Add(un20cinqpaper);
+            Controls.Add(un20quatrepaper);
+            Controls.Add(un20depaper);
+            Controls.Add(un20x);
+            Controls.Add(button3);
+            Controls.Add(un20unpaper);
             Controls.Add(un21x);
             Controls.Add(label_version);
             Controls.Add(label_start);
             Controls.Add(button_start);
-            Controls.Add(un21onze);
+            Controls.Add(un21onzepaper);
             Controls.Add(Papercheck);
             Controls.Add(vanillacheck);
             Controls.Add(version_mc);
@@ -313,11 +397,17 @@
         private Button version_mc;
         private CheckBox vanillacheck;
         private CheckBox Papercheck;
-        private CheckBox un21onze;
+        private CheckBox un21onzepaper;
         private Button button_start;
         private Label label_start;
         private Label label_version;
         private CheckBox un21x;
-        private CheckBox un20un;
+        private CheckBox un20unpaper;
+        private Button button3;
+        private CheckBox un20x;
+        private CheckBox un20depaper;
+        private CheckBox un20quatrepaper;
+        private CheckBox un20cinqpaper;
+        private CheckBox un20sixpaper;
     }
 }
