@@ -41,6 +41,7 @@ namespace Dow_gui
             { "Paper 1.20.4", ("https://fill-data.papermc.io/v1/objects/cabed3ae77cf55deba7c7d8722bc9cfd5e991201c211665f9265616d9fe5c77b/paper-1.20.4-499.jar","test") },
             { "Paper 1.20.2", ("https://fill-data.papermc.io/v1/objects/ba340a835ac40b8563aa7eda1cd6479a11a7623409c89a2c35cd9d7490ed17a7/paper-1.20.2-318.jar","test") },
             { "Paper 1.20.1", ("https://fill-data.papermc.io/v1/objects/234a9b32098100c6fc116664d64e36ccdb58b5b649af0f80bcccb08b0255eaea/paper-1.20.1-196.jar","test") },
+            { "Paper 1.20", ("https://fill-data.papermc.io/v1/objects/1e4ccfc0599f491ee6fee4455d3722332ac5d78584fccd55cbb3b51e11504505/paper-1.20-17.jar","test") },
 
             //1.19x
             { "Paper 1.19.4", ("https://fill-data.papermc.io/v1/objects/e587d78cba3e99ef8c4bc24cf20cc3bdbbe89e33b0b572070446af4eb6be5ccf/paper-1.19.4-550.jar","test") },
@@ -58,14 +59,13 @@ namespace Dow_gui
             { "Vanilla 1.21.11", ("https://piston-data.mojang.com/v1/objects/64bb6d763bed0a9f1d632ec347938594144943ed/server.jar","test") },
 
             //1.20.x            
-
-            //{ "Vanilla 1.20.6", ("https://piston-data.mojang.com/v1/objects/84194a2f286ef7c14ed7ce0090dba59902951553/server.jar","test") },
-            //{ "Vanilla 1.20.5", ("https://piston-data.mojang.com/v1/objects/84194a2f286ef7c14ed7ce0090dba59902951553/server.jar","test") },
-            //{ "Vanilla 1.20.4", ("https://piston-data.mojang.com/v1/objects/8dd1a28015f51b1803213892b50b7b4fc76e594d/server.jar","test") },
-            //{ "Vanilla 1.20.3", ("https://piston-data.mojang.com/v1/objects/84194a2f286ef7c14ed7ce0090dba59902951553/server.jar","test") },
-            //{ "Vanilla 1.20.2", ("https://piston-data.mojang.com/v1/objects/84194a2f286ef7c14ed7ce0090dba59902951553/server.jar","test") },
+            { "Vanilla 1.20.6", ("https://piston-data.mojang.com/v1/objects/145ff0858209bcfc164859ba735d4199aafa1eea/server.jar","test") },
+            { "Vanilla 1.20.5", ("https://piston-data.mojang.com/v1/objects/79493072f65e17243fd36a699c9a96b4381feb91/server.jar","test") },
+            { "Vanilla 1.20.4", ("https://piston-data.mojang.com/v1/objects/8dd1a28015f51b1803213892b50b7b4fc76e594d/server.jar","test") },
+            { "Vanilla 1.20.3", ("https://piston-data.mojang.com/v1/objects/4fb536bfd4a83d61cdbaf684b8d311e66e7d4c49/server.jar","test") },
+            { "Vanilla 1.20.2", ("https://piston-data.mojang.com/v1/objects/5b868151bd02b41319f54c8d4061b8cae84e665c/server.jar","test") },
             { "Vanilla 1.20.1", ("https://piston-data.mojang.com/v1/objects/84194a2f286ef7c14ed7ce0090dba59902951553/server.jar","test") },
-            //{ "Vanilla 1.20", ("https://piston-data.mojang.com/v1/objects/84194a2f286ef7c14ed7ce0090dba59902951553/server.jar","test") },
+            { "Vanilla 1.20", ("https://piston-data.mojang.com/v1/objects/15c777e2cfe0556eef19aab534b186c0c6f277e1/server.jar","test") },
         };
 
 
@@ -505,6 +505,87 @@ pause";
             statutjdk.Visible = true;
             version = version_choix_paper["Paper 1.19.4"].link;
             version_mc.Text = "Paper 1.19.4";
+        }
+
+        private void toolStripMenuItem11_Click(object sender, EventArgs e)
+        {
+            label_jdk21.Visible = true;
+            button1.Visible = true;
+            statutjdk.Visible = true;
+            version = version_choix_vanilla["Vanilla 1.21.11"].link;
+            version_mc.Text = "Vanilla 1.21.11";
+        }
+
+        private void toolStripMenuItem12_Click(object sender, EventArgs e)
+        {
+            label_jdk21.Visible = true;
+            button1.Visible = true;
+            statutjdk.Visible = true;
+            version = version_choix_vanilla["Vanilla 1.20.6"].link;
+            version_mc.Text = "Vanilla 1.20.6";
+        }
+
+        private void toolStripMenuItem13_Click(object sender, EventArgs e)
+        {
+            label_jdk21.Visible = true;
+            button1.Visible = true;
+            statutjdk.Visible = true;
+            version = version_choix_vanilla["Vanilla 1.20.5"].link;
+            version_mc.Text = "Vanilla 1.20.5";
+        }
+
+        private void toolStripMenuItem14_Click(object sender, EventArgs e)
+        {
+            label_jdk21.Visible = true;
+            button1.Visible = true;
+            statutjdk.Visible = true;
+            version = version_choix_vanilla["Vanilla 1.20.4"].link;
+            version_mc.Text = "Vanilla 1.20.4";
+        }
+
+        private void toolStripMenuItem15_Click(object sender, EventArgs e)
+        {
+            label_jdk21.Visible = true;
+            button1.Visible = true;
+            statutjdk.Visible = true;
+            version = version_choix_vanilla["Vanilla 1.20.3"].link;
+            version_mc.Text = "Vanilla 1.20.3";
+        }
+
+        private void toolStripMenuItem16_Click(object sender, EventArgs e)
+        {
+            label_jdk21.Visible = true;
+            button1.Visible = true;
+            statutjdk.Visible = true;
+            version = version_choix_vanilla["Vanilla 1.20.2"].link;
+            version_mc.Text = "Vanilla 1.20.2";
+        }
+
+        private void toolStripMenuItem17_Click(object sender, EventArgs e)
+        {
+            label_jdk21.Visible = true;
+            button1.Visible = true;
+            statutjdk.Visible = true;
+            version = version_choix_vanilla["Vanilla 1.20.1"].link;
+            version_mc.Text = "Vanilla 1.20.1";
+        }
+
+        private void toolStripMenuItem18_Click(object sender, EventArgs e)
+        {
+            label_jdk21.Visible = true;
+            button1.Visible = true;
+            statutjdk.Visible = true;
+            version = version_choix_vanilla["Vanilla 1.20"].link;
+            version_mc.Text = "Vanilla 1.20";
+        }
+
+        private void toolStripMenuItem19_Click(object sender, EventArgs e)
+        {
+            label_jdk21.Visible = true;
+            button1.Visible = true;
+            statutjdk.Visible = true;
+            version = version_choix_paper["Paper 1.20"].link;
+            version_mc.Text = "Paper 1.20";
         }
     }
 }
