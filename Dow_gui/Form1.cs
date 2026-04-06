@@ -34,6 +34,16 @@ namespace Dow_gui
             
             //1.21x
             { "Paper 1.21.11", ("https://fill-data.papermc.io/v1/objects/7a6774a582b1c24328b779854f43f2d3ac3bd2daeb5cedbbd1074f0871635a18/paper-1.21.11-128.jar","test") },
+            { "Paper 1.21.10", ("https://fill-data.papermc.io/v1/objects/158703f75a26f842ea656b3dc6d75bf3d1ec176b97a2c36384d0b80b3871af53/paper-1.21.10-130.jar","test") },
+            { "Paper 1.21.9", ("https://fill-data.papermc.io/v1/objects/aec002e77c7566e49494fdf05430b96078ffd1d7430e652d4f338fef951e7a10/paper-1.21.9-59.jar","test") },
+            { "Paper 1.21.8", ("https://fill-data.papermc.io/v1/objects/8de7c52c3b02403503d16fac58003f1efef7dd7a0256786843927fa92ee57f1e/paper-1.21.8-60.jar","test") },
+            { "Paper 1.21.7", ("https://fill-data.papermc.io/v1/objects/83838188699cb2837e55b890fb1a1d39ad0710285ed633fbf9fc14e9f47ce078/paper-1.21.7-32.jar","test") },
+            { "Paper 1.21.6", ("https://fill-data.papermc.io/v1/objects/35e2dfa66b3491b9d2f0bb033679fa5aca1e1fdf097e7a06a80ce8afeda5c214/paper-1.21.6-48.jar","test") },
+            { "Paper 1.21.5", ("https://fill-data.papermc.io/v1/objects/2ae6ae22adf417699746e0f89fc2ef6cb6ee050a5f6608cee58f0535d60b509e/paper-1.21.5-114.jar","test") },
+            { "Paper 1.21.4", ("https://fill-data.papermc.io/v1/objects/5ee4f542f628a14c644410b08c94ea42e772ef4d29fe92973636b6813d4eaffc/paper-1.21.4-232.jar","test") },
+            { "Paper 1.21.3", ("https://fill-data.papermc.io/v1/objects/87e973e1d338e869e7fdbc4b8fadc1579d7bb0246a0e0cf6e5700ace6c8bc17e/paper-1.21.3-83.jar","test") },
+            { "Paper 1.21.1", ("https://fill-data.papermc.io/v1/objects/39bd8c00b9e18de91dcabd3cc3dcfa5328685a53b7187a2f63280c22e2d287b9/paper-1.21.1-133.jar","test") },
+            { "Paper 1.21", ("https://fill-data.papermc.io/v1/objects/ab9bb1afc3cea6978a0c03ce8448aa654fe8a9c4dddf341e7cbda1b0edaa73f5/paper-1.21-130.jar","test") },
 
             //1.20x
             { "Paper 1.20.6", ("https://fill-data.papermc.io/v1/objects/4b011f5adb5f6c72007686a223174fce82f31aeb4b34faf4652abc840b47e640/paper-1.20.6-151.jar","test") },
@@ -57,6 +67,8 @@ namespace Dow_gui
 
             //1.21.x
             { "Vanilla 1.21.11", ("https://piston-data.mojang.com/v1/objects/64bb6d763bed0a9f1d632ec347938594144943ed/server.jar","test") },
+            { "Vanilla 1.21.8", ("https://piston-data.mojang.com/v1/objects/6bce4ef400e4efaa63a13d5e6f6b500be969ef81/server.jar","test") },
+            { "Vanilla 1.21.1", ("https://piston-data.mojang.com/v1/objects/59353fb40c36d304f2035d51e7d6e6baa98dc05c/server.jar","test") },
 
             //1.20.x            
             { "Vanilla 1.20.6", ("https://piston-data.mojang.com/v1/objects/145ff0858209bcfc164859ba735d4199aafa1eea/server.jar","test") },
@@ -66,6 +78,13 @@ namespace Dow_gui
             { "Vanilla 1.20.2", ("https://piston-data.mojang.com/v1/objects/5b868151bd02b41319f54c8d4061b8cae84e665c/server.jar","test") },
             { "Vanilla 1.20.1", ("https://piston-data.mojang.com/v1/objects/84194a2f286ef7c14ed7ce0090dba59902951553/server.jar","test") },
             { "Vanilla 1.20", ("https://piston-data.mojang.com/v1/objects/15c777e2cfe0556eef19aab534b186c0c6f277e1/server.jar","test") },
+
+            //1.19x
+            { "Vanilla 1.19.4", ("https://piston-data.mojang.com/v1/objects/8f3112a1049751cc472ec13e397eade5336ca7ae/server.jar","test") },
+            { "Vanilla 1.19.3", ("https://piston-data.mojang.com/v1/objects/c9df48efed58511cdd0213c56b9013a7b5c9ac1f/server.jar","test") },
+            { "Vanilla 1.19.2", ("https://piston-data.mojang.com/v1/objects/f69c284232d7c7580bd89a5a4931c3581eae1378/server.jar","test") },
+            { "Vanilla 1.19.1", ("https://piston-data.mojang.com/v1/objects/8399e1211e95faa421c1507b322dbeae86d604df/server.jar","test") },
+            { "Vanilla 1.19", ("https://piston-data.mojang.com/v1/objects/e00c4052dac1d59a1188b2aa9d5a87113aaf1122/server.jar","test") },
         };
 
 
@@ -91,6 +110,12 @@ namespace Dow_gui
             label_Dossier_serv.BackColor = Color.Red;
 
 
+        }
+        void jdk21()
+        {
+            label_jdk21.Visible = true;
+            button1.Visible = true;
+            statutjdk.Visible = true;
         }
 
         private async void button1_Click(object sender, EventArgs e)
@@ -409,9 +434,7 @@ pause";
 
         private void faisToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            label_jdk21.Visible = true;
-            button1.Visible = true;
-            statutjdk.Visible = true;
+            jdk21();
             version = version_choix_paper["Paper 1.21.11"].link;
             version_mc.Text = "Paper 1.21.11";
         }
@@ -428,164 +451,247 @@ pause";
 
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            label_jdk21.Visible = true;
-            button1.Visible = true;
-            statutjdk.Visible = true;
+            jdk21();
             version = version_choix_paper["Paper 1.20.1"].link;
             version_mc.Text = "Paper 1.20.1";
         }
 
         private void toolStripMenuItem3_Click(object sender, EventArgs e)
         {
-            label_jdk21.Visible = true;
-            button1.Visible = true;
-            statutjdk.Visible = true;
+            jdk21();
             version = version_choix_paper["Paper 1.20.2"].link;
             version_mc.Text = "Paper 1.20.2";
         }
 
         private void toolStripMenuItem4_Click(object sender, EventArgs e)
         {
-            label_jdk21.Visible = true;
-            button1.Visible = true;
-            statutjdk.Visible = true;
+            jdk21();
             version = version_choix_paper["Paper 1.20.4"].link;
             version_mc.Text = "Paper 1.20.4";
         }
 
         private void toolStripMenuItem5_Click(object sender, EventArgs e)
         {
-            label_jdk21.Visible = true;
-            button1.Visible = true;
-            statutjdk.Visible = true;
+            jdk21();
             version = version_choix_paper["Paper 1.20.5"].link;
             version_mc.Text = "Paper 1.20.5";
         }
 
         private void toolStripMenuItem6_Click(object sender, EventArgs e)
         {
-            label_jdk21.Visible = true;
-            button1.Visible = true;
-            statutjdk.Visible = true;
+            jdk21();
             version = version_choix_paper["Paper 1.20.6"].link;
             version_mc.Text = "Paper 1.20.6";
         }
 
         private void toolStripMenuItem7_Click(object sender, EventArgs e)
         {
-            label_jdk21.Visible = true;
-            button1.Visible = true;
-            statutjdk.Visible = true;
+            jdk21();
             version = version_choix_paper["Paper 1.19.1"].link;
             version_mc.Text = "Paper 1.19.1";
         }
 
         private void toolStripMenuItem8_Click(object sender, EventArgs e)
         {
-            label_jdk21.Visible = true;
-            button1.Visible = true;
-            statutjdk.Visible = true;
+            jdk21();
             version = version_choix_paper["Paper 1.19.2"].link;
             version_mc.Text = "Paper 1.19.2";
         }
 
         private void toolStripMenuItem9_Click(object sender, EventArgs e)
         {
-            label_jdk21.Visible = true;
-            button1.Visible = true;
-            statutjdk.Visible = true;
+            jdk21();
             version = version_choix_paper["Paper 1.19.3"].link;
             version_mc.Text = "Paper 1.19.3";
         }
 
         private void toolStripMenuItem10_Click(object sender, EventArgs e)
         {
-            label_jdk21.Visible = true;
-            button1.Visible = true;
-            statutjdk.Visible = true;
+            jdk21();
             version = version_choix_paper["Paper 1.19.4"].link;
             version_mc.Text = "Paper 1.19.4";
         }
 
         private void toolStripMenuItem11_Click(object sender, EventArgs e)
         {
-            label_jdk21.Visible = true;
-            button1.Visible = true;
-            statutjdk.Visible = true;
+            jdk21();
             version = version_choix_vanilla["Vanilla 1.21.11"].link;
             version_mc.Text = "Vanilla 1.21.11";
         }
 
         private void toolStripMenuItem12_Click(object sender, EventArgs e)
         {
-            label_jdk21.Visible = true;
-            button1.Visible = true;
-            statutjdk.Visible = true;
+            jdk21();
             version = version_choix_vanilla["Vanilla 1.20.6"].link;
             version_mc.Text = "Vanilla 1.20.6";
         }
 
         private void toolStripMenuItem13_Click(object sender, EventArgs e)
         {
-            label_jdk21.Visible = true;
-            button1.Visible = true;
-            statutjdk.Visible = true;
+            jdk21();
             version = version_choix_vanilla["Vanilla 1.20.5"].link;
             version_mc.Text = "Vanilla 1.20.5";
         }
 
         private void toolStripMenuItem14_Click(object sender, EventArgs e)
         {
-            label_jdk21.Visible = true;
-            button1.Visible = true;
-            statutjdk.Visible = true;
+            jdk21();
             version = version_choix_vanilla["Vanilla 1.20.4"].link;
             version_mc.Text = "Vanilla 1.20.4";
         }
 
         private void toolStripMenuItem15_Click(object sender, EventArgs e)
         {
-            label_jdk21.Visible = true;
-            button1.Visible = true;
-            statutjdk.Visible = true;
+            jdk21();
             version = version_choix_vanilla["Vanilla 1.20.3"].link;
             version_mc.Text = "Vanilla 1.20.3";
         }
 
         private void toolStripMenuItem16_Click(object sender, EventArgs e)
         {
-            label_jdk21.Visible = true;
-            button1.Visible = true;
-            statutjdk.Visible = true;
+            jdk21();
             version = version_choix_vanilla["Vanilla 1.20.2"].link;
             version_mc.Text = "Vanilla 1.20.2";
         }
 
         private void toolStripMenuItem17_Click(object sender, EventArgs e)
         {
-            label_jdk21.Visible = true;
-            button1.Visible = true;
-            statutjdk.Visible = true;
+            jdk21();
             version = version_choix_vanilla["Vanilla 1.20.1"].link;
             version_mc.Text = "Vanilla 1.20.1";
         }
 
         private void toolStripMenuItem18_Click(object sender, EventArgs e)
         {
-            label_jdk21.Visible = true;
-            button1.Visible = true;
-            statutjdk.Visible = true;
+            jdk21();
             version = version_choix_vanilla["Vanilla 1.20"].link;
             version_mc.Text = "Vanilla 1.20";
         }
 
         private void toolStripMenuItem19_Click(object sender, EventArgs e)
         {
-            label_jdk21.Visible = true;
-            button1.Visible = true;
-            statutjdk.Visible = true;
+            jdk21();
             version = version_choix_paper["Paper 1.20"].link;
             version_mc.Text = "Paper 1.20";
+        }
+
+        private void toolStripMenuItem29_Click(object sender, EventArgs e)
+        {
+            jdk21();
+            version = version_choix_paper["Paper 1.21"].link;
+            version_mc.Text = "Paper 1.21";
+        }
+
+        private void toolStripMenuItem28_Click(object sender, EventArgs e)
+        {
+            jdk21();
+            version = version_choix_paper["Paper 1.21.1"].link;
+            version_mc.Text = "Paper 1.21.1";
+        }
+
+        private void toolStripMenuItem27_Click(object sender, EventArgs e)
+        {
+            jdk21();
+            version = version_choix_paper["Paper 1.21.3"].link;
+            version_mc.Text = "Paper 1.21.3";
+        }
+
+        private void toolStripMenuItem26_Click(object sender, EventArgs e)
+        {
+            jdk21();
+            version = version_choix_paper["Paper 1.21.4"].link;
+            version_mc.Text = "Paper 1.21.4";
+        }
+
+        private void toolStripMenuItem25_Click(object sender, EventArgs e)
+        {
+            jdk21();
+            version = version_choix_paper["Paper 1.21.5"].link;
+            version_mc.Text = "Paper 1.21.5";
+        }
+
+        private void toolStripMenuItem24_Click(object sender, EventArgs e)
+        {
+            jdk21();
+            version = version_choix_paper["Paper 1.21.6"].link;
+            version_mc.Text = "Paper 1.21.6";
+        }
+
+        private void toolStripMenuItem23_Click(object sender, EventArgs e)
+        {
+            jdk21();
+            version = version_choix_paper["Paper 1.21.7"].link;
+            version_mc.Text = "Paper 1.21.7";
+        }
+
+        private void toolStripMenuItem22_Click(object sender, EventArgs e)
+        {
+            jdk21();
+            version = version_choix_paper["Paper 1.21.8"].link;
+            version_mc.Text = "Paper 1.21.8";
+        }
+
+        private void toolStripMenuItem21_Click(object sender, EventArgs e)
+        {
+            jdk21();
+            version = version_choix_paper["Paper 1.21.9"].link;
+            version_mc.Text = "Paper 1.21.9";
+        }
+
+        private void toolStripMenuItem20_Click(object sender, EventArgs e)
+        {
+            jdk21();
+            version = version_choix_paper["Paper 1.21.10"].link;
+            version_mc.Text = "Paper 1.21.10";
+        }
+
+        private void toolStripMenuItem30_Click(object sender, EventArgs e)
+        {
+            jdk21();
+            version = version_choix_vanilla["Vanilla 1.21.8"].link;
+            version_mc.Text = "Vanilla 1.21.8";
+        }
+
+        private void toolStripMenuItem31_Click(object sender, EventArgs e)
+        {
+            jdk21();
+            version = version_choix_vanilla["Vanilla 1.21.1"].link;
+            version_mc.Text = "Vanilla 1.21.1";
+        }
+
+        private void toolStripMenuItem32_Click(object sender, EventArgs e)
+        {
+            jdk21();
+            version = version_choix_vanilla["Vanilla 1.19.4"].link;
+            version_mc.Text = "Vanilla 1.19.4";
+        }
+
+        private void toolStripMenuItem33_Click(object sender, EventArgs e)
+        {
+            jdk21();
+            version = version_choix_vanilla["Vanilla 1.19.3"].link;
+            version_mc.Text = "Vanilla 1.19.3";
+        }
+
+        private void toolStripMenuItem34_Click(object sender, EventArgs e)
+        {
+            jdk21();
+            version = version_choix_vanilla["Vanilla 1.19.2"].link;
+            version_mc.Text = "Vanilla 1.19.2";
+        }
+
+        private void toolStripMenuItem35_Click(object sender, EventArgs e)
+        {
+            jdk21();
+            version = version_choix_vanilla["Vanilla 1.19.1"].link;
+            version_mc.Text = "Vanilla 1.19.1";
+        }
+
+        private void toolStripMenuItem36_Click(object sender, EventArgs e)
+        {
+            jdk21();
+            version = version_choix_vanilla["Vanilla 1.19"].link;
+            version_mc.Text = "Vanilla 1.19";
         }
     }
 }
