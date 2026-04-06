@@ -202,7 +202,7 @@
             // un21onzepaper
             // 
             un21onzepaper.AutoSize = true;
-            un21onzepaper.Location = new Point(926, 77);
+            un21onzepaper.Location = new Point(892, 75);
             un21onzepaper.Name = "un21onzepaper";
             un21onzepaper.Size = new Size(62, 19);
             un21onzepaper.TabIndex = 14;
@@ -247,7 +247,7 @@
             // un21x
             // 
             un21x.AutoSize = true;
-            un21x.Location = new Point(926, 53);
+            un21x.Location = new Point(892, 51);
             un21x.Margin = new Padding(3, 2, 3, 2);
             un21x.Name = "un21x";
             un21x.Size = new Size(52, 19);
@@ -260,7 +260,7 @@
             // un20unpaper
             // 
             un20unpaper.AutoSize = true;
-            un20unpaper.Location = new Point(805, 78);
+            un20unpaper.Location = new Point(834, 77);
             un20unpaper.Name = "un20unpaper";
             un20unpaper.Size = new Size(56, 19);
             un20unpaper.TabIndex = 19;
@@ -283,7 +283,7 @@
             // un20x
             // 
             un20x.AutoSize = true;
-            un20x.Location = new Point(805, 53);
+            un20x.Location = new Point(834, 52);
             un20x.Name = "un20x";
             un20x.Size = new Size(52, 19);
             un20x.TabIndex = 21;
@@ -295,7 +295,7 @@
             // un20depaper
             // 
             un20depaper.AutoSize = true;
-            un20depaper.Location = new Point(805, 102);
+            un20depaper.Location = new Point(834, 101);
             un20depaper.Name = "un20depaper";
             un20depaper.Size = new Size(56, 19);
             un20depaper.TabIndex = 22;
@@ -307,7 +307,7 @@
             // un20quatrepaper
             // 
             un20quatrepaper.AutoSize = true;
-            un20quatrepaper.Location = new Point(805, 127);
+            un20quatrepaper.Location = new Point(834, 126);
             un20quatrepaper.Name = "un20quatrepaper";
             un20quatrepaper.Size = new Size(56, 19);
             un20quatrepaper.TabIndex = 24;
@@ -319,7 +319,7 @@
             // un20cinqpaper
             // 
             un20cinqpaper.AutoSize = true;
-            un20cinqpaper.Location = new Point(806, 152);
+            un20cinqpaper.Location = new Point(835, 151);
             un20cinqpaper.Name = "un20cinqpaper";
             un20cinqpaper.Size = new Size(56, 19);
             un20cinqpaper.TabIndex = 25;
@@ -331,7 +331,7 @@
             // un20sixpaper
             // 
             un20sixpaper.AutoSize = true;
-            un20sixpaper.Location = new Point(806, 177);
+            un20sixpaper.Location = new Point(835, 176);
             un20sixpaper.Name = "un20sixpaper";
             un20sixpaper.Size = new Size(56, 19);
             un20sixpaper.TabIndex = 26;
