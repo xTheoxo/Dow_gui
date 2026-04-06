@@ -41,7 +41,7 @@ namespace Dow_gui
             { "Paper 1.20.4", ("https://fill-data.papermc.io/v1/objects/cabed3ae77cf55deba7c7d8722bc9cfd5e991201c211665f9265616d9fe5c77b/paper-1.20.4-499.jar","test") },
             { "Paper 1.20.2", ("https://fill-data.papermc.io/v1/objects/ba340a835ac40b8563aa7eda1cd6479a11a7623409c89a2c35cd9d7490ed17a7/paper-1.20.2-318.jar","test") },
             { "Paper 1.20.1", ("https://fill-data.papermc.io/v1/objects/234a9b32098100c6fc116664d64e36ccdb58b5b649af0f80bcccb08b0255eaea/paper-1.20.1-196.jar","test") },
-            
+
         };
 
         Dictionary<string, (string link, string somme)> version_choix_vanilla = new Dictionary<string, (string link, string somme)>()
@@ -294,8 +294,8 @@ pause";
             if (Papercheck.Checked)
             {
                 vanillacheck.Checked = false;
-                un21x.Visible = true;
-                un20x.Visible = true;
+                un21xpaper.Visible = true;
+                un20xpaper.Visible = true;
             }
             else if (!vanillacheck.Checked && !Papercheck.Checked)
             {
@@ -306,11 +306,11 @@ pause";
                 un20unpaper.Visible = false;
                 un20unpaper.Checked = false;
                 //1.21.x
-                un21x.Visible = false;
-                un21x.Checked = false;
+                un21xpaper.Visible = false;
+                un21xpaper.Checked = false;
                 //1.20.x
-                un20x.Visible = false;
-                un20x.Checked = false;
+                un20xpaper.Visible = false;
+                un20xpaper.Checked = false;
 
                 version = "";
             }
@@ -373,7 +373,7 @@ pause";
             }
             else
             {
-                MessageBox.Show("Veuillez sélectionner une version de minecraft");
+                MessageBox.Show("Veuillez sélectionner une version de minecraft. Pour ce faire allez dans un des menu en haut de l'application. Vous avez le choix entre 'Vanilla' 'Paper' 'Spigot'.");
             }
         }
 
@@ -418,9 +418,9 @@ pause";
 
         private void un21x_CheckedChanged(object sender, EventArgs e)
         {
-            if (un21x.Checked)
+            if (un21xpaper.Checked)
             {
-                un20x.Checked = false;
+                un20xpaper.Checked = false;
 
                 un21onzepaper.Visible = true; ;
 
@@ -489,10 +489,11 @@ pause";
 
         private void checkBox1_CheckedChanged_3(object sender, EventArgs e)
         {
-            if (un20x.Checked)
+            if (un20xpaper.Checked)
             {
                 //Les autres catégories
-                un21x.Checked = false;
+                un21xpaper.Checked = false;
+                un19xpaper.Checked = false;
 
                 //Les versions de cette catégories
                 un20unpaper.Visible = true;
@@ -504,6 +505,10 @@ pause";
                 //Les autres versions
                 un21onzepaper.Visible = false;
                 un21onzepaper.Checked = false;
+
+                un19unpaper.Visible = false;
+                un19unpaper.Checked = false;
+
             }
             else
             {
@@ -644,6 +649,50 @@ pause";
                 statutjdk.Visible = false;
                 version_mc.Text = "Choisir sa version";
             }
+        }
+
+        private void un19xpaper_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void efefToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripTextBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripComboBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ccToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void faisToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            label_jdk21.Visible = true;
+            button1.Visible = true;
+            statutjdk.Visible = true;
+            version = version_choix_paper["Paper 1.21.11"].link;
+            version_mc.Text = "Paper 1.21.11";
+        }
+
+        private void tToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripComboBox1_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }
