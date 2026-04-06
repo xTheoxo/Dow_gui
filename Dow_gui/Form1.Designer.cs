@@ -90,6 +90,8 @@
             toolStripMenuItem8 = new ToolStripMenuItem();
             toolStripMenuItem7 = new ToolStripMenuItem();
             spigotpluginsToolStripMenuItem = new ToolStripMenuItem();
+            button_playit = new Button();
+            Playit_label = new Label();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -247,7 +249,7 @@
             // 
             // button3
             // 
-            button3.Location = new Point(13, 221);
+            button3.Location = new Point(14, 248);
             button3.Name = "button3";
             button3.Size = new Size(278, 23);
             button3.TabIndex = 20;
@@ -276,7 +278,7 @@
             // 
             xToolStripMenuItem2.DropDownItems.AddRange(new ToolStripItem[] { toolStripMenuItem11, toolStripMenuItem30, toolStripMenuItem31 });
             xToolStripMenuItem2.Name = "xToolStripMenuItem2";
-            xToolStripMenuItem2.Size = new Size(180, 22);
+            xToolStripMenuItem2.Size = new Size(100, 22);
             xToolStripMenuItem2.Text = "1.21x";
             // 
             // toolStripMenuItem11
@@ -304,7 +306,7 @@
             // 
             xToolStripMenuItem3.DropDownItems.AddRange(new ToolStripItem[] { toolStripMenuItem12, toolStripMenuItem13, toolStripMenuItem14, toolStripMenuItem15, toolStripMenuItem16, toolStripMenuItem17, toolStripMenuItem18 });
             xToolStripMenuItem3.Name = "xToolStripMenuItem3";
-            xToolStripMenuItem3.Size = new Size(180, 22);
+            xToolStripMenuItem3.Size = new Size(100, 22);
             xToolStripMenuItem3.Text = "1.20x";
             // 
             // toolStripMenuItem12
@@ -360,41 +362,41 @@
             // 
             xToolStripMenuItem4.DropDownItems.AddRange(new ToolStripItem[] { toolStripMenuItem32, toolStripMenuItem33, toolStripMenuItem34, toolStripMenuItem35, toolStripMenuItem36 });
             xToolStripMenuItem4.Name = "xToolStripMenuItem4";
-            xToolStripMenuItem4.Size = new Size(180, 22);
+            xToolStripMenuItem4.Size = new Size(100, 22);
             xToolStripMenuItem4.Text = "1.19x";
             // 
             // toolStripMenuItem32
             // 
             toolStripMenuItem32.Name = "toolStripMenuItem32";
-            toolStripMenuItem32.Size = new Size(180, 22);
+            toolStripMenuItem32.Size = new Size(104, 22);
             toolStripMenuItem32.Text = "1.19.4";
             toolStripMenuItem32.Click += toolStripMenuItem32_Click;
             // 
             // toolStripMenuItem33
             // 
             toolStripMenuItem33.Name = "toolStripMenuItem33";
-            toolStripMenuItem33.Size = new Size(180, 22);
+            toolStripMenuItem33.Size = new Size(104, 22);
             toolStripMenuItem33.Text = "1.19.3";
             toolStripMenuItem33.Click += toolStripMenuItem33_Click;
             // 
             // toolStripMenuItem34
             // 
             toolStripMenuItem34.Name = "toolStripMenuItem34";
-            toolStripMenuItem34.Size = new Size(180, 22);
+            toolStripMenuItem34.Size = new Size(104, 22);
             toolStripMenuItem34.Text = "1.19.2";
             toolStripMenuItem34.Click += toolStripMenuItem34_Click;
             // 
             // toolStripMenuItem35
             // 
             toolStripMenuItem35.Name = "toolStripMenuItem35";
-            toolStripMenuItem35.Size = new Size(180, 22);
+            toolStripMenuItem35.Size = new Size(104, 22);
             toolStripMenuItem35.Text = "1.19.1";
             toolStripMenuItem35.Click += toolStripMenuItem35_Click;
             // 
             // toolStripMenuItem36
             // 
             toolStripMenuItem36.Name = "toolStripMenuItem36";
-            toolStripMenuItem36.Size = new Size(180, 22);
+            toolStripMenuItem36.Size = new Size(104, 22);
             toolStripMenuItem36.Text = "1.19";
             toolStripMenuItem36.Click += toolStripMenuItem36_Click;
             // 
@@ -582,6 +584,27 @@
             spigotpluginsToolStripMenuItem.Text = "Spigot (plugins)";
             spigotpluginsToolStripMenuItem.Visible = false;
             // 
+            // button_playit
+            // 
+            button_playit.Location = new Point(176, 219);
+            button_playit.Name = "button_playit";
+            button_playit.Size = new Size(116, 23);
+            button_playit.TabIndex = 33;
+            button_playit.Text = "Installer";
+            button_playit.UseVisualStyleBackColor = true;
+            button_playit.Visible = false;
+            button_playit.Click += button4_Click_1;
+            // 
+            // Playit_label
+            // 
+            Playit_label.AutoSize = true;
+            Playit_label.Location = new Point(14, 223);
+            Playit_label.Name = "Playit_label";
+            Playit_label.Size = new Size(107, 15);
+            Playit_label.TabIndex = 34;
+            Playit_label.Text = "Playit pour le multi";
+            Playit_label.Visible = false;
+            // 
             // Form1
             // 
             AllowDrop = true;
@@ -589,6 +612,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1077, 572);
+            Controls.Add(Playit_label);
+            Controls.Add(button_playit);
             Controls.Add(button3);
             Controls.Add(label_version);
             Controls.Add(label_start);
@@ -679,5 +704,7 @@
         private ToolStripMenuItem toolStripMenuItem34;
         private ToolStripMenuItem toolStripMenuItem35;
         private ToolStripMenuItem toolStripMenuItem36;
+        private Button button_playit;
+        private Label Playit_label;
     }
 }

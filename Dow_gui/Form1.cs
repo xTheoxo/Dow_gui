@@ -7,8 +7,10 @@ namespace Dow_gui
     public partial class Form1 : Form
     {
         string urlJdk = "https://download.oracle.com/java/21/latest/jdk-21_windows-x64_bin.exe";
+        readonly string urlPlayit = "https://github.com/playit-cloud/playit-agent/releases/download/v0.17.1/playit-windows-x86_64-signed.msi";
         string path = "";
         string cheminJar = "";
+        string playitPath = "";
         string cheminBat, contenuBat = "";
         string cheminEula, contenuEula = "";
         string chemin = "";
@@ -206,6 +208,9 @@ namespace Dow_gui
                 Version.Visible = true;
                 version_mc.Visible = true;
                 label_version.Visible = true;
+
+                Playit_label.Visible = true;
+                button_playit.Visible = true;
 
 
 
@@ -692,6 +697,35 @@ pause";
             jdk21();
             version = version_choix_vanilla["Vanilla 1.19"].link;
             version_mc.Text = "Vanilla 1.19";
+        }
+
+        private async void button4_Click_1(object sender, EventArgs e)
+        {
+            button_playit.BackColor = Color.Red;
+            playitPath = Path.Combine(chemin, "playit.msi");
+            using (HttpClient client = new HttpClient())
+            using (HttpResponseMessage response = await client.GetAsync(urlPlayit))
+            {
+                response.EnsureSuccessStatusCode();
+
+                using (FileStream fs = new FileStream(playitPath, FileMode.Create))
+                {
+                    await response.Content.CopyToAsync(fs);
+                }
+            }
+
+
+            
+            ProcessStartInfo psi = new ProcessStartInfo
+            {
+                FileName = "msiexec",
+                Arguments = $"/i \"{chemin}\\playit.msi\" /quiet",
+                Verb = "runas", // admin
+                UseShellExecute = true
+            };
+            
+            Process.Start(psi);
+            button_playit.BackColor = Color.LightGreen;
         }
     }
 }
