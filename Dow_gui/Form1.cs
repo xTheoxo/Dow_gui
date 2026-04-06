@@ -16,7 +16,7 @@ namespace Dow_gui
         string pathEula = "";
         string pathjar = "";
         string version = "";
-        string choixVersion = "";
+        //string choixVersion = "";
 
 
         //readonly string javapath = @"C:\Program Files\Java\latest\jdk-21\bin\java.exe";
@@ -35,12 +35,18 @@ namespace Dow_gui
             //1.21x
             { "Paper 1.21.11", ("https://fill-data.papermc.io/v1/objects/7a6774a582b1c24328b779854f43f2d3ac3bd2daeb5cedbbd1074f0871635a18/paper-1.21.11-128.jar","test") },
 
-            //1.20.x
+            //1.20x
             { "Paper 1.20.6", ("https://fill-data.papermc.io/v1/objects/4b011f5adb5f6c72007686a223174fce82f31aeb4b34faf4652abc840b47e640/paper-1.20.6-151.jar","test") },
             { "Paper 1.20.5", ("https://fill-data.papermc.io/v1/objects/3cd7da2f8df92e082a501a39c674aab3c0343edd179b86f5baccaebfc9974132/paper-1.20.5-22.jar","test") },
             { "Paper 1.20.4", ("https://fill-data.papermc.io/v1/objects/cabed3ae77cf55deba7c7d8722bc9cfd5e991201c211665f9265616d9fe5c77b/paper-1.20.4-499.jar","test") },
             { "Paper 1.20.2", ("https://fill-data.papermc.io/v1/objects/ba340a835ac40b8563aa7eda1cd6479a11a7623409c89a2c35cd9d7490ed17a7/paper-1.20.2-318.jar","test") },
             { "Paper 1.20.1", ("https://fill-data.papermc.io/v1/objects/234a9b32098100c6fc116664d64e36ccdb58b5b649af0f80bcccb08b0255eaea/paper-1.20.1-196.jar","test") },
+
+            //1.19x
+            { "Paper 1.19.4", ("https://fill-data.papermc.io/v1/objects/e587d78cba3e99ef8c4bc24cf20cc3bdbbe89e33b0b572070446af4eb6be5ccf/paper-1.19.4-550.jar","test") },
+            { "Paper 1.19.3", ("https://fill-data.papermc.io/v1/objects/3007f2c638d5f04ed32b6adaa33053fe3634ccfa74345c83d3ea4982d38db5dc/paper-1.19.3-448.jar","test") },
+            { "Paper 1.19.2", ("https://fill-data.papermc.io/v1/objects/2eb5c7459ec94bcdc597ed711d549a3ab4b0fda13e412a0792a1a069b5903864/paper-1.19.2-307.jar","test") },
+            { "Paper 1.19.1", ("https://fill-data.papermc.io/v1/objects/5afe23a1fade92c547124fa874bc7d908fa676f49f09879fa876224b62e9d51b/paper-1.19.1-111.jar","test") },
 
         };
 
@@ -273,72 +279,6 @@ pause";
 
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-            if (vanillacheck.Checked)
-            {
-                version_mc.Text = "Vanilla";
-                Papercheck.Checked = false;
-
-                un21onzepaper.Visible = false;
-                un21onzepaper.Checked = false;
-            }
-            else if (!vanillacheck.Checked && !Papercheck.Checked)
-            {
-                version_mc.Text = "Choisir sa version";
-            }
-        }
-
-        private void Papercheck_CheckedChanged(object sender, EventArgs e)
-        {
-            if (Papercheck.Checked)
-            {
-                vanillacheck.Checked = false;
-                un21xpaper.Visible = true;
-                un20xpaper.Visible = true;
-            }
-            else if (!vanillacheck.Checked && !Papercheck.Checked)
-            {
-                //1.21.1
-                un21onzepaper.Visible = false;
-                un21onzepaper.Checked = false;
-                //1.20.1
-                un20unpaper.Visible = false;
-                un20unpaper.Checked = false;
-                //1.21.x
-                un21xpaper.Visible = false;
-                un21xpaper.Checked = false;
-                //1.20.x
-                un20xpaper.Visible = false;
-                un20xpaper.Checked = false;
-
-                version = "";
-            }
-
-        }
-
-        private void checkBox1_CheckedChanged_1(object sender, EventArgs e)
-        {
-            if (un21onzepaper.Checked)
-            {
-
-                un20unpaper.Checked = false;
-                label_jdk21.Visible = true;
-                button1.Visible = true;
-                statutjdk.Visible = true;
-                version = version_choix_paper["Paper 1.21.11"].link;
-                version_mc.Text = "Paper 1.21.11";
-            }
-            else
-            {
-                version = "";
-                label_jdk21.Visible = false;
-                button1.Visible = false;
-                statutjdk.Visible = false;
-                version_mc.Text = "Choisir sa version";
-            }
-        }
-
         private async void version_mc_Click(object sender, EventArgs e)
         {
             if (version != "")
@@ -418,59 +358,13 @@ pause";
 
         private void un21x_CheckedChanged(object sender, EventArgs e)
         {
-            if (un21xpaper.Checked)
-            {
-                un20xpaper.Checked = false;
-
-                un21onzepaper.Visible = true; ;
-
-                un20unpaper.Visible = false;
-                un20unpaper.Checked = false;
-            }
-            else
-            {
-                un21onzepaper.Visible = false;
-                un21onzepaper.Checked = false;
-
-                version = "";
-            }
 
         }
-
         private void label1_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void checkBox1_CheckedChanged_2(object sender, EventArgs e)
-        {
-            if (un20unpaper.Checked)
-            {
-                // Les autres versions de la même catégorie
-                un20depaper.Checked = false;
-                un20quatrepaper.Checked = false;
-                un20cinqpaper.Checked = false;
-                un20sixpaper.Checked = false;
-
-
-
-
-                un21onzepaper.Checked = false;
-                label_jdk21.Visible = true;
-                button1.Visible = true;
-                statutjdk.Visible = true;
-                version = version_choix_paper["Paper 1.20.1"].link;
-                version_mc.Text = "Paper 1.20.1";
-            }
-            else
-            {
-                version = "";
-                label_jdk21.Visible = false;
-                button1.Visible = false;
-                statutjdk.Visible = false;
-                version_mc.Text = "Choisir sa version";
-            }
-        }
 
         private void button3_Click_2(object sender, EventArgs e)
         {
@@ -487,169 +381,6 @@ pause";
 
         }
 
-        private void checkBox1_CheckedChanged_3(object sender, EventArgs e)
-        {
-            if (un20xpaper.Checked)
-            {
-                //Les autres catégories
-                un21xpaper.Checked = false;
-                un19xpaper.Checked = false;
-
-                //Les versions de cette catégories
-                un20unpaper.Visible = true;
-                un20depaper.Visible = true;
-                un20quatrepaper.Visible = true;
-                un20cinqpaper.Visible = true;
-                un20sixpaper.Visible = true;
-
-                //Les autres versions
-                un21onzepaper.Visible = false;
-                un21onzepaper.Checked = false;
-
-                un19unpaper.Visible = false;
-                un19unpaper.Checked = false;
-
-            }
-            else
-            {
-                // Les versions
-                un20unpaper.Visible = false;
-                un20unpaper.Checked = false;
-
-                un20depaper.Visible = false;
-                un20depaper.Checked = false;
-
-                un20quatrepaper.Visible = false;
-                un20quatrepaper.Checked = false;
-
-                un20cinqpaper.Visible = false;
-                un20cinqpaper.Checked = false;
-
-                un20sixpaper.Visible = false;
-                un20sixpaper.Checked = false;
-
-                version = "";
-            }
-        }
-
-        private void checkBox5_CheckedChanged(object sender, EventArgs e)
-        {
-            if (un20sixpaper.Checked)
-            {
-                // Les autres versions de la même catégorie
-                un20unpaper.Checked = false;
-                un20depaper.Checked = false;
-                un20quatrepaper.Checked = false;
-                un20cinqpaper.Checked = false;
-
-
-
-                un21onzepaper.Checked = false;
-                label_jdk21.Visible = true;
-                button1.Visible = true;
-                statutjdk.Visible = true;
-                version = version_choix_paper["Paper 1.20.6"].link;
-                version_mc.Text = "Paper 1.20.6";
-            }
-            else
-            {
-                version = "";
-                label_jdk21.Visible = false;
-                button1.Visible = false;
-                statutjdk.Visible = false;
-                version_mc.Text = "Choisir sa version";
-            }
-        }
-
-        private void un20depaper_CheckedChanged(object sender, EventArgs e)
-        {
-            if (un20depaper.Checked)
-            {
-                // Les autres versions de la même catégorie
-                un20unpaper.Checked = false;
-                un20quatrepaper.Checked = false;
-                un20cinqpaper.Checked = false;
-                un20sixpaper.Checked = false;
-
-
-
-
-                un21onzepaper.Checked = false;
-                label_jdk21.Visible = true;
-                button1.Visible = true;
-                statutjdk.Visible = true;
-                version = version_choix_paper["Paper 1.20.2"].link;
-                version_mc.Text = "Paper 1.20.2";
-            }
-            else
-            {
-                version = "";
-                label_jdk21.Visible = false;
-                button1.Visible = false;
-                statutjdk.Visible = false;
-                version_mc.Text = "Choisir sa version";
-            }
-        }
-
-        private void un20quatrepaper_CheckedChanged(object sender, EventArgs e)
-        {
-            if (un20quatrepaper.Checked)
-            {
-                // Les autres versions de la même catégorie
-                un20unpaper.Checked = false;
-                un20depaper.Checked = false;
-                un20cinqpaper.Checked = false;
-                un20sixpaper.Checked = false;
-
-
-
-
-                un21onzepaper.Checked = false;
-                label_jdk21.Visible = true;
-                button1.Visible = true;
-                statutjdk.Visible = true;
-                version = version_choix_paper["Paper 1.20.4"].link;
-                version_mc.Text = "Paper 1.20.4";
-            }
-            else
-            {
-                version = "";
-                label_jdk21.Visible = false;
-                button1.Visible = false;
-                statutjdk.Visible = false;
-                version_mc.Text = "Choisir sa version";
-            }
-        }
-
-        private void un20cinqpaper_CheckedChanged(object sender, EventArgs e)
-        {
-            if (un20cinqpaper.Checked)
-            {
-                // Les autres versions de la même catégorie
-                un20unpaper.Checked = false;
-                un20depaper.Checked = false;
-                un20quatrepaper.Checked = false;
-                un20sixpaper.Checked = false;
-
-
-
-
-                un21onzepaper.Checked = false;
-                label_jdk21.Visible = true;
-                button1.Visible = true;
-                statutjdk.Visible = true;
-                version = version_choix_paper["Paper 1.20.5"].link;
-                version_mc.Text = "Paper 1.20.5";
-            }
-            else
-            {
-                version = "";
-                label_jdk21.Visible = false;
-                button1.Visible = false;
-                statutjdk.Visible = false;
-                version_mc.Text = "Choisir sa version";
-            }
-        }
 
         private void un19xpaper_CheckedChanged(object sender, EventArgs e)
         {
@@ -693,6 +424,87 @@ pause";
         private void toolStripComboBox1_Click_1(object sender, EventArgs e)
         {
 
+        }
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            label_jdk21.Visible = true;
+            button1.Visible = true;
+            statutjdk.Visible = true;
+            version = version_choix_paper["Paper 1.20.1"].link;
+            version_mc.Text = "Paper 1.20.1";
+        }
+
+        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            label_jdk21.Visible = true;
+            button1.Visible = true;
+            statutjdk.Visible = true;
+            version = version_choix_paper["Paper 1.20.2"].link;
+            version_mc.Text = "Paper 1.20.2";
+        }
+
+        private void toolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            label_jdk21.Visible = true;
+            button1.Visible = true;
+            statutjdk.Visible = true;
+            version = version_choix_paper["Paper 1.20.4"].link;
+            version_mc.Text = "Paper 1.20.4";
+        }
+
+        private void toolStripMenuItem5_Click(object sender, EventArgs e)
+        {
+            label_jdk21.Visible = true;
+            button1.Visible = true;
+            statutjdk.Visible = true;
+            version = version_choix_paper["Paper 1.20.5"].link;
+            version_mc.Text = "Paper 1.20.5";
+        }
+
+        private void toolStripMenuItem6_Click(object sender, EventArgs e)
+        {
+            label_jdk21.Visible = true;
+            button1.Visible = true;
+            statutjdk.Visible = true;
+            version = version_choix_paper["Paper 1.20.6"].link;
+            version_mc.Text = "Paper 1.20.6";
+        }
+
+        private void toolStripMenuItem7_Click(object sender, EventArgs e)
+        {
+            label_jdk21.Visible = true;
+            button1.Visible = true;
+            statutjdk.Visible = true;
+            version = version_choix_paper["Paper 1.19.1"].link;
+            version_mc.Text = "Paper 1.19.1";
+        }
+
+        private void toolStripMenuItem8_Click(object sender, EventArgs e)
+        {
+            label_jdk21.Visible = true;
+            button1.Visible = true;
+            statutjdk.Visible = true;
+            version = version_choix_paper["Paper 1.19.2"].link;
+            version_mc.Text = "Paper 1.19.2";
+        }
+
+        private void toolStripMenuItem9_Click(object sender, EventArgs e)
+        {
+            label_jdk21.Visible = true;
+            button1.Visible = true;
+            statutjdk.Visible = true;
+            version = version_choix_paper["Paper 1.19.3"].link;
+            version_mc.Text = "Paper 1.19.3";
+        }
+
+        private void toolStripMenuItem10_Click(object sender, EventArgs e)
+        {
+            label_jdk21.Visible = true;
+            button1.Visible = true;
+            statutjdk.Visible = true;
+            version = version_choix_paper["Paper 1.19.4"].link;
+            version_mc.Text = "Paper 1.19.4";
         }
     }
 }
