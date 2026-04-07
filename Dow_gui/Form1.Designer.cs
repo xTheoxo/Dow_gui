@@ -645,6 +645,7 @@
             label_jdklocal.Size = new Size(54, 15);
             label_jdklocal.TabIndex = 36;
             label_jdklocal.Text = "JDK local";
+            label_jdklocal.Visible = false;
             // 
             // label_statutjdklocal
             // 

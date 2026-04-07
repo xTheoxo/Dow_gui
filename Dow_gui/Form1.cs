@@ -251,12 +251,14 @@ namespace Dow_gui
                     label_version.Text = "Non installé";
                     Version.BackColor = Color.Red;
                 }
-
+                if (File.Exists(chemin + "\\" + java))
+                    label_jdklocal.BackColor = Color.LightGreen;
                 if (File.Exists(pathBat) && File.Exists(pathEula) && (File.Exists(pathjar)))
                 {
                     label_start.Visible = true;
                     button_start.Visible = true;
                     button_jdklocal.Visible = true;
+                    label_jdklocal.Visible = true;
                 }
             }
         }
