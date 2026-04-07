@@ -96,6 +96,7 @@
             Playit_label = new Label();
             button_jdklocal = new Button();
             label_jdklocal = new Label();
+            label_statutjdklocal = new Label();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -646,6 +647,15 @@
             label_jdklocal.TabIndex = 36;
             label_jdklocal.Text = "JDK local";
             // 
+            // label_statutjdklocal
+            // 
+            label_statutjdklocal.AutoSize = true;
+            label_statutjdklocal.Location = new Point(371, 96);
+            label_statutjdklocal.Name = "label_statutjdklocal";
+            label_statutjdklocal.Size = new Size(50, 20);
+            label_statutjdklocal.TabIndex = 37;
+            label_statutjdklocal.Text = "label3";
+            // 
             // Form1
             // 
             AllowDrop = true;
@@ -653,6 +663,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1231, 763);
+            Controls.Add(label_statutjdklocal);
             Controls.Add(label_jdklocal);
             Controls.Add(button_jdklocal);
             Controls.Add(Playit_label);
@@ -752,5 +763,6 @@
         private Label label_jdklocal;
         private ToolStripMenuItem jDKToolStripMenuItem;
         private ToolStripMenuItem jDK21ToolStripMenuItem;
+        private Label label_statutjdklocal;
     }
 }

@@ -93,6 +93,9 @@ namespace Dow_gui
             { "Vanilla 1.19.2", ("https://piston-data.mojang.com/v1/objects/f69c284232d7c7580bd89a5a4931c3581eae1378/server.jar","test") },
             { "Vanilla 1.19.1", ("https://piston-data.mojang.com/v1/objects/8399e1211e95faa421c1507b322dbeae86d604df/server.jar","test") },
             { "Vanilla 1.19", ("https://piston-data.mojang.com/v1/objects/e00c4052dac1d59a1188b2aa9d5a87113aaf1122/server.jar","test") },
+
+            //1.18x
+            { "Vanilla 1.18", ("","test") },
         };
 
 
@@ -254,6 +257,8 @@ namespace Dow_gui
                     label_start.Visible = true;
                     button_start.Visible = true;
                 }
+                if (Path.Exists(chemin + "JDK\\bin"))
+                    MessageBox.Show("Le jdk 21 est déja installé");
             }
         }
 
@@ -745,47 +750,54 @@ pause";
 
         private async void button4_Click_2(object sender, EventArgs e)
         {
-            cheminJarfile = Path.Combine(chemin, "jdk.zip");
-
-            label_jdklocal.BackColor = Color.Yellow;
-            // Voir doc Microsoft > HttpClient
-            using (HttpClient client = new HttpClient())
-            using (HttpResponseMessage response = await client.GetAsync(jdkfileurl))
+            if (!Path.Exists(chemin + "JDK\\bin"))
             {
-                response.EnsureSuccessStatusCode();
+                MessageBox.Show("Le jdk 21 est déja installé");
+                cheminJarfile = Path.Combine(chemin, "jdk.zip");
 
-                using (FileStream fs = new FileStream(cheminJarfile, FileMode.Create))
+                label_jdklocal.BackColor = Color.Yellow;
+                // Voir doc Microsoft > HttpClient
+                using (HttpClient client = new HttpClient())
+                using (HttpResponseMessage response = await client.GetAsync(jdkfileurl))
                 {
-                    await response.Content.CopyToAsync(fs);
+                    response.EnsureSuccessStatusCode();
+
+                    using (FileStream fs = new FileStream(cheminJarfile, FileMode.Create))
+                    {
+                        await response.Content.CopyToAsync(fs);
+                    }
                 }
+
+                string zipPath = Path.Combine(chemin, "jdk.zip");
+                string extractPath = chemin;
+
+                var dossiersAvant = Directory.GetDirectories(chemin);
+
+                ZipFile.ExtractToDirectory(zipPath, extractPath);
+
+                var dossiersApres = Directory.GetDirectories(chemin);
+
+                string nouveauDossier = dossiersApres
+                    .Except(dossiersAvant)
+                    .FirstOrDefault();
+
+
+                if (nouveauDossier != null)
+                {
+                    string cheminFinal = Path.Combine(chemin, "JDK");
+
+                    if (Directory.Exists(cheminFinal))
+                        Directory.Delete(cheminFinal, true);
+
+                    Directory.Move(nouveauDossier, cheminFinal);
+
+                    File.Delete(chemin + "/" + "jdk.zip");
+                }
+                label_jdklocal.BackColor = Color.LightGreen;
+                label_statutjdklocal.Text = "JDK installé";
             }
-
-            string zipPath = Path.Combine(chemin, "jdk.zip");
-            string extractPath = chemin;
-
-            var dossiersAvant = Directory.GetDirectories(chemin);
-
-            ZipFile.ExtractToDirectory(zipPath, extractPath);
-
-            var dossiersApres = Directory.GetDirectories(chemin);
-
-            string nouveauDossier = dossiersApres
-                .Except(dossiersAvant)
-                .FirstOrDefault();
-            
-
-            if (nouveauDossier != null)
-            {
-                string cheminFinal = Path.Combine(chemin, "JDK");
-
-                if (Directory.Exists(cheminFinal))
-                    Directory.Delete(cheminFinal, true);
-
-                Directory.Move(nouveauDossier, cheminFinal);
-
-                File.Delete(chemin + "/" + "jdk.zip");
-            }
-            label_jdklocal.BackColor = Color.LightGreen;
+            else
+                MessageBox.Show("Le jdk 21 est déjà installé");
         }
     }
 }
