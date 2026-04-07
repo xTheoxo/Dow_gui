@@ -90,18 +90,21 @@
             toolStripMenuItem8 = new ToolStripMenuItem();
             toolStripMenuItem7 = new ToolStripMenuItem();
             spigotpluginsToolStripMenuItem = new ToolStripMenuItem();
+            jDKToolStripMenuItem = new ToolStripMenuItem();
+            jDK21ToolStripMenuItem = new ToolStripMenuItem();
             button_playit = new Button();
             Playit_label = new Label();
+            button_jdklocal = new Button();
+            label_jdklocal = new Label();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // button1
             // 
             button1.BackColor = Color.Transparent;
-            button1.Location = new Point(175, 60);
-            button1.Margin = new Padding(3, 2, 3, 2);
+            button1.Location = new Point(200, 45);
             button1.Name = "button1";
-            button1.Size = new Size(116, 22);
+            button1.Size = new Size(133, 29);
             button1.TabIndex = 0;
             button1.Text = "Installer";
             button1.UseVisualStyleBackColor = false;
@@ -112,9 +115,9 @@
             // 
             label_jdk21.AutoSize = true;
             label_jdk21.BackColor = Color.Red;
-            label_jdk21.Location = new Point(37, 67);
+            label_jdk21.Location = new Point(31, 49);
             label_jdk21.Name = "label_jdk21";
-            label_jdk21.Size = new Size(50, 15);
+            label_jdk21.Size = new Size(65, 20);
             label_jdk21.TabIndex = 1;
             label_jdk21.Text = "  jdk 21  ";
             label_jdk21.Visible = false;
@@ -122,9 +125,9 @@
             // label_bat
             // 
             label_bat.AutoSize = true;
-            label_bat.Location = new Point(43, 101);
+            label_bat.Location = new Point(49, 135);
             label_bat.Name = "label_bat";
-            label_bat.Size = new Size(36, 15);
+            label_bat.Size = new Size(47, 20);
             label_bat.TabIndex = 2;
             label_bat.Text = "  Bat  ";
             label_bat.Visible = false;
@@ -132,10 +135,9 @@
             // 
             // button2
             // 
-            button2.Location = new Point(175, 126);
-            button2.Margin = new Padding(3, 2, 3, 2);
+            button2.Location = new Point(200, 168);
             button2.Name = "button2";
-            button2.Size = new Size(117, 22);
+            button2.Size = new Size(134, 29);
             button2.TabIndex = 3;
             button2.Text = "Choisir un dossier";
             button2.UseVisualStyleBackColor = true;
@@ -143,9 +145,9 @@
             // 
             // label1
             // 
-            label1.Location = new Point(1034, 546);
+            label1.Location = new Point(1182, 728);
             label1.Name = "label1";
-            label1.Size = new Size(31, 17);
+            label1.Size = new Size(35, 23);
             label1.TabIndex = 0;
             label1.Text = "1.2";
             label1.Click += label1_Click;
@@ -153,19 +155,18 @@
             // label_Dossier_serv
             // 
             label_Dossier_serv.AutoSize = true;
-            label_Dossier_serv.Location = new Point(12, 130);
+            label_Dossier_serv.Location = new Point(14, 173);
             label_Dossier_serv.Name = "label_Dossier_serv";
-            label_Dossier_serv.Size = new Size(98, 15);
+            label_Dossier_serv.Size = new Size(125, 20);
             label_Dossier_serv.TabIndex = 5;
             label_Dossier_serv.Text = "  Dossier serveur  ";
             label_Dossier_serv.Click += label_Dossier_serv_Click;
             // 
             // button_bat
             // 
-            button_bat.Location = new Point(175, 94);
-            button_bat.Margin = new Padding(3, 2, 3, 2);
+            button_bat.Location = new Point(200, 125);
             button_bat.Name = "button_bat";
-            button_bat.Size = new Size(117, 22);
+            button_bat.Size = new Size(134, 29);
             button_bat.TabIndex = 6;
             button_bat.Text = "Aucun dossier";
             button_bat.UseVisualStyleBackColor = true;
@@ -175,18 +176,18 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(315, 133);
+            label2.Location = new Point(360, 177);
             label2.Name = "label2";
-            label2.Size = new Size(0, 15);
+            label2.Size = new Size(0, 20);
             label2.TabIndex = 7;
             label2.Click += label2_Click_1;
             // 
             // statutjdk
             // 
             statutjdk.AutoSize = true;
-            statutjdk.Location = new Point(325, 60);
+            statutjdk.Location = new Point(371, 45);
             statutjdk.Name = "statutjdk";
-            statutjdk.Size = new Size(38, 15);
+            statutjdk.Size = new Size(50, 20);
             statutjdk.TabIndex = 8;
             statutjdk.Text = "label3";
             statutjdk.Visible = false;
@@ -195,9 +196,9 @@
             // Version
             // 
             Version.AutoSize = true;
-            Version.Location = new Point(12, 161);
+            Version.Location = new Point(14, 215);
             Version.Name = "Version";
-            Version.Size = new Size(99, 15);
+            Version.Size = new Size(124, 20);
             Version.TabIndex = 9;
             Version.Text = "Version minecraft";
             Version.Visible = false;
@@ -205,9 +206,10 @@
             // 
             // version_mc
             // 
-            version_mc.Location = new Point(176, 157);
+            version_mc.Location = new Point(201, 209);
+            version_mc.Margin = new Padding(3, 4, 3, 4);
             version_mc.Name = "version_mc";
-            version_mc.Size = new Size(116, 23);
+            version_mc.Size = new Size(133, 31);
             version_mc.TabIndex = 10;
             version_mc.Text = "Choisir sa version";
             version_mc.UseVisualStyleBackColor = true;
@@ -216,9 +218,10 @@
             // 
             // button_start
             // 
-            button_start.Location = new Point(175, 190);
+            button_start.Location = new Point(200, 253);
+            button_start.Margin = new Padding(3, 4, 3, 4);
             button_start.Name = "button_start";
-            button_start.Size = new Size(117, 23);
+            button_start.Size = new Size(134, 31);
             button_start.TabIndex = 15;
             button_start.Text = "Démarrer";
             button_start.UseVisualStyleBackColor = true;
@@ -228,9 +231,9 @@
             // label_start
             // 
             label_start.AutoSize = true;
-            label_start.Location = new Point(12, 194);
+            label_start.Location = new Point(14, 259);
             label_start.Name = "label_start";
-            label_start.Size = new Size(109, 15);
+            label_start.Size = new Size(139, 20);
             label_start.TabIndex = 16;
             label_start.Text = "Démarrer le serveur";
             label_start.Visible = false;
@@ -239,9 +242,9 @@
             // label_version
             // 
             label_version.AutoSize = true;
-            label_version.Location = new Point(325, 161);
+            label_version.Location = new Point(371, 215);
             label_version.Name = "label_version";
-            label_version.Size = new Size(38, 15);
+            label_version.Size = new Size(50, 20);
             label_version.TabIndex = 17;
             label_version.Text = "label3";
             label_version.Visible = false;
@@ -249,9 +252,10 @@
             // 
             // button3
             // 
-            button3.Location = new Point(14, 248);
+            button3.Location = new Point(16, 331);
+            button3.Margin = new Padding(3, 4, 3, 4);
             button3.Name = "button3";
-            button3.Size = new Size(278, 23);
+            button3.Size = new Size(318, 31);
             button3.TabIndex = 20;
             button3.Text = "Option";
             button3.UseVisualStyleBackColor = true;
@@ -260,10 +264,12 @@
             // 
             // menuStrip1
             // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { vanillaToolStripMenuItem, tToolStripMenuItem, spigotpluginsToolStripMenuItem });
+            menuStrip1.ImageScalingSize = new Size(20, 20);
+            menuStrip1.Items.AddRange(new ToolStripItem[] { vanillaToolStripMenuItem, tToolStripMenuItem, spigotpluginsToolStripMenuItem, jDKToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(1077, 24);
+            menuStrip1.Padding = new Padding(7, 3, 0, 3);
+            menuStrip1.Size = new Size(1231, 30);
             menuStrip1.TabIndex = 32;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -271,34 +277,34 @@
             // 
             vanillaToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { xToolStripMenuItem2, xToolStripMenuItem3, xToolStripMenuItem4 });
             vanillaToolStripMenuItem.Name = "vanillaToolStripMenuItem";
-            vanillaToolStripMenuItem.Size = new Size(53, 20);
+            vanillaToolStripMenuItem.Size = new Size(67, 24);
             vanillaToolStripMenuItem.Text = "Vanilla";
             // 
             // xToolStripMenuItem2
             // 
             xToolStripMenuItem2.DropDownItems.AddRange(new ToolStripItem[] { toolStripMenuItem11, toolStripMenuItem30, toolStripMenuItem31 });
             xToolStripMenuItem2.Name = "xToolStripMenuItem2";
-            xToolStripMenuItem2.Size = new Size(100, 22);
+            xToolStripMenuItem2.Size = new Size(126, 26);
             xToolStripMenuItem2.Text = "1.21x";
             // 
             // toolStripMenuItem11
             // 
             toolStripMenuItem11.Name = "toolStripMenuItem11";
-            toolStripMenuItem11.Size = new Size(110, 22);
+            toolStripMenuItem11.Size = new Size(138, 26);
             toolStripMenuItem11.Text = "1.21.11";
             toolStripMenuItem11.Click += toolStripMenuItem11_Click;
             // 
             // toolStripMenuItem30
             // 
             toolStripMenuItem30.Name = "toolStripMenuItem30";
-            toolStripMenuItem30.Size = new Size(110, 22);
+            toolStripMenuItem30.Size = new Size(138, 26);
             toolStripMenuItem30.Text = "1.21.8";
             toolStripMenuItem30.Click += toolStripMenuItem30_Click;
             // 
             // toolStripMenuItem31
             // 
             toolStripMenuItem31.Name = "toolStripMenuItem31";
-            toolStripMenuItem31.Size = new Size(110, 22);
+            toolStripMenuItem31.Size = new Size(138, 26);
             toolStripMenuItem31.Text = "1.21.1";
             toolStripMenuItem31.Click += toolStripMenuItem31_Click;
             // 
@@ -306,55 +312,55 @@
             // 
             xToolStripMenuItem3.DropDownItems.AddRange(new ToolStripItem[] { toolStripMenuItem12, toolStripMenuItem13, toolStripMenuItem14, toolStripMenuItem15, toolStripMenuItem16, toolStripMenuItem17, toolStripMenuItem18 });
             xToolStripMenuItem3.Name = "xToolStripMenuItem3";
-            xToolStripMenuItem3.Size = new Size(100, 22);
+            xToolStripMenuItem3.Size = new Size(126, 26);
             xToolStripMenuItem3.Text = "1.20x";
             // 
             // toolStripMenuItem12
             // 
             toolStripMenuItem12.Name = "toolStripMenuItem12";
-            toolStripMenuItem12.Size = new Size(104, 22);
+            toolStripMenuItem12.Size = new Size(130, 26);
             toolStripMenuItem12.Text = "1.20.6";
             toolStripMenuItem12.Click += toolStripMenuItem12_Click;
             // 
             // toolStripMenuItem13
             // 
             toolStripMenuItem13.Name = "toolStripMenuItem13";
-            toolStripMenuItem13.Size = new Size(104, 22);
+            toolStripMenuItem13.Size = new Size(130, 26);
             toolStripMenuItem13.Text = "1.20.5";
             toolStripMenuItem13.Click += toolStripMenuItem13_Click;
             // 
             // toolStripMenuItem14
             // 
             toolStripMenuItem14.Name = "toolStripMenuItem14";
-            toolStripMenuItem14.Size = new Size(104, 22);
+            toolStripMenuItem14.Size = new Size(130, 26);
             toolStripMenuItem14.Text = "1.20.4";
             toolStripMenuItem14.Click += toolStripMenuItem14_Click;
             // 
             // toolStripMenuItem15
             // 
             toolStripMenuItem15.Name = "toolStripMenuItem15";
-            toolStripMenuItem15.Size = new Size(104, 22);
+            toolStripMenuItem15.Size = new Size(130, 26);
             toolStripMenuItem15.Text = "1.20.3";
             toolStripMenuItem15.Click += toolStripMenuItem15_Click;
             // 
             // toolStripMenuItem16
             // 
             toolStripMenuItem16.Name = "toolStripMenuItem16";
-            toolStripMenuItem16.Size = new Size(104, 22);
+            toolStripMenuItem16.Size = new Size(130, 26);
             toolStripMenuItem16.Text = "1.20.2";
             toolStripMenuItem16.Click += toolStripMenuItem16_Click;
             // 
             // toolStripMenuItem17
             // 
             toolStripMenuItem17.Name = "toolStripMenuItem17";
-            toolStripMenuItem17.Size = new Size(104, 22);
+            toolStripMenuItem17.Size = new Size(130, 26);
             toolStripMenuItem17.Text = "1.20.1";
             toolStripMenuItem17.Click += toolStripMenuItem17_Click;
             // 
             // toolStripMenuItem18
             // 
             toolStripMenuItem18.Name = "toolStripMenuItem18";
-            toolStripMenuItem18.Size = new Size(104, 22);
+            toolStripMenuItem18.Size = new Size(130, 26);
             toolStripMenuItem18.Text = "1.20";
             toolStripMenuItem18.Click += toolStripMenuItem18_Click;
             // 
@@ -362,41 +368,41 @@
             // 
             xToolStripMenuItem4.DropDownItems.AddRange(new ToolStripItem[] { toolStripMenuItem32, toolStripMenuItem33, toolStripMenuItem34, toolStripMenuItem35, toolStripMenuItem36 });
             xToolStripMenuItem4.Name = "xToolStripMenuItem4";
-            xToolStripMenuItem4.Size = new Size(100, 22);
+            xToolStripMenuItem4.Size = new Size(126, 26);
             xToolStripMenuItem4.Text = "1.19x";
             // 
             // toolStripMenuItem32
             // 
             toolStripMenuItem32.Name = "toolStripMenuItem32";
-            toolStripMenuItem32.Size = new Size(104, 22);
+            toolStripMenuItem32.Size = new Size(130, 26);
             toolStripMenuItem32.Text = "1.19.4";
             toolStripMenuItem32.Click += toolStripMenuItem32_Click;
             // 
             // toolStripMenuItem33
             // 
             toolStripMenuItem33.Name = "toolStripMenuItem33";
-            toolStripMenuItem33.Size = new Size(104, 22);
+            toolStripMenuItem33.Size = new Size(130, 26);
             toolStripMenuItem33.Text = "1.19.3";
             toolStripMenuItem33.Click += toolStripMenuItem33_Click;
             // 
             // toolStripMenuItem34
             // 
             toolStripMenuItem34.Name = "toolStripMenuItem34";
-            toolStripMenuItem34.Size = new Size(104, 22);
+            toolStripMenuItem34.Size = new Size(130, 26);
             toolStripMenuItem34.Text = "1.19.2";
             toolStripMenuItem34.Click += toolStripMenuItem34_Click;
             // 
             // toolStripMenuItem35
             // 
             toolStripMenuItem35.Name = "toolStripMenuItem35";
-            toolStripMenuItem35.Size = new Size(104, 22);
+            toolStripMenuItem35.Size = new Size(130, 26);
             toolStripMenuItem35.Text = "1.19.1";
             toolStripMenuItem35.Click += toolStripMenuItem35_Click;
             // 
             // toolStripMenuItem36
             // 
             toolStripMenuItem36.Name = "toolStripMenuItem36";
-            toolStripMenuItem36.Size = new Size(104, 22);
+            toolStripMenuItem36.Size = new Size(130, 26);
             toolStripMenuItem36.Text = "1.19";
             toolStripMenuItem36.Click += toolStripMenuItem36_Click;
             // 
@@ -404,7 +410,7 @@
             // 
             tToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { ccToolStripMenuItem, xToolStripMenuItem, xToolStripMenuItem1 });
             tToolStripMenuItem.Name = "tToolStripMenuItem";
-            tToolStripMenuItem.Size = new Size(99, 20);
+            tToolStripMenuItem.Size = new Size(122, 24);
             tToolStripMenuItem.Text = "Paper (plugins)";
             tToolStripMenuItem.Click += tToolStripMenuItem_Click;
             // 
@@ -412,84 +418,84 @@
             // 
             ccToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { faisToolStripMenuItem, toolStripMenuItem20, toolStripMenuItem21, toolStripMenuItem22, toolStripMenuItem23, toolStripMenuItem24, toolStripMenuItem25, toolStripMenuItem26, toolStripMenuItem27, toolStripMenuItem28, toolStripMenuItem29 });
             ccToolStripMenuItem.Name = "ccToolStripMenuItem";
-            ccToolStripMenuItem.Size = new Size(100, 22);
+            ccToolStripMenuItem.Size = new Size(126, 26);
             ccToolStripMenuItem.Text = "1.21x";
             ccToolStripMenuItem.Click += ccToolStripMenuItem_Click;
             // 
             // faisToolStripMenuItem
             // 
             faisToolStripMenuItem.Name = "faisToolStripMenuItem";
-            faisToolStripMenuItem.Size = new Size(110, 22);
+            faisToolStripMenuItem.Size = new Size(138, 26);
             faisToolStripMenuItem.Text = "1.21.11";
             faisToolStripMenuItem.Click += faisToolStripMenuItem_Click;
             // 
             // toolStripMenuItem20
             // 
             toolStripMenuItem20.Name = "toolStripMenuItem20";
-            toolStripMenuItem20.Size = new Size(110, 22);
+            toolStripMenuItem20.Size = new Size(138, 26);
             toolStripMenuItem20.Text = "1.21.10";
             toolStripMenuItem20.Click += toolStripMenuItem20_Click;
             // 
             // toolStripMenuItem21
             // 
             toolStripMenuItem21.Name = "toolStripMenuItem21";
-            toolStripMenuItem21.Size = new Size(110, 22);
+            toolStripMenuItem21.Size = new Size(138, 26);
             toolStripMenuItem21.Text = "1.21.9";
             toolStripMenuItem21.Click += toolStripMenuItem21_Click;
             // 
             // toolStripMenuItem22
             // 
             toolStripMenuItem22.Name = "toolStripMenuItem22";
-            toolStripMenuItem22.Size = new Size(110, 22);
+            toolStripMenuItem22.Size = new Size(138, 26);
             toolStripMenuItem22.Text = "1.21.8";
             toolStripMenuItem22.Click += toolStripMenuItem22_Click;
             // 
             // toolStripMenuItem23
             // 
             toolStripMenuItem23.Name = "toolStripMenuItem23";
-            toolStripMenuItem23.Size = new Size(110, 22);
+            toolStripMenuItem23.Size = new Size(138, 26);
             toolStripMenuItem23.Text = "1.21.7";
             toolStripMenuItem23.Click += toolStripMenuItem23_Click;
             // 
             // toolStripMenuItem24
             // 
             toolStripMenuItem24.Name = "toolStripMenuItem24";
-            toolStripMenuItem24.Size = new Size(110, 22);
+            toolStripMenuItem24.Size = new Size(138, 26);
             toolStripMenuItem24.Text = "1.21.6";
             toolStripMenuItem24.Click += toolStripMenuItem24_Click;
             // 
             // toolStripMenuItem25
             // 
             toolStripMenuItem25.Name = "toolStripMenuItem25";
-            toolStripMenuItem25.Size = new Size(110, 22);
+            toolStripMenuItem25.Size = new Size(138, 26);
             toolStripMenuItem25.Text = "1.21.5";
             toolStripMenuItem25.Click += toolStripMenuItem25_Click;
             // 
             // toolStripMenuItem26
             // 
             toolStripMenuItem26.Name = "toolStripMenuItem26";
-            toolStripMenuItem26.Size = new Size(110, 22);
+            toolStripMenuItem26.Size = new Size(138, 26);
             toolStripMenuItem26.Text = "1.21.4";
             toolStripMenuItem26.Click += toolStripMenuItem26_Click;
             // 
             // toolStripMenuItem27
             // 
             toolStripMenuItem27.Name = "toolStripMenuItem27";
-            toolStripMenuItem27.Size = new Size(110, 22);
+            toolStripMenuItem27.Size = new Size(138, 26);
             toolStripMenuItem27.Text = "1.21.3";
             toolStripMenuItem27.Click += toolStripMenuItem27_Click;
             // 
             // toolStripMenuItem28
             // 
             toolStripMenuItem28.Name = "toolStripMenuItem28";
-            toolStripMenuItem28.Size = new Size(110, 22);
+            toolStripMenuItem28.Size = new Size(138, 26);
             toolStripMenuItem28.Text = "1.21.1";
             toolStripMenuItem28.Click += toolStripMenuItem28_Click;
             // 
             // toolStripMenuItem29
             // 
             toolStripMenuItem29.Name = "toolStripMenuItem29";
-            toolStripMenuItem29.Size = new Size(110, 22);
+            toolStripMenuItem29.Size = new Size(138, 26);
             toolStripMenuItem29.Text = "1.21";
             toolStripMenuItem29.Click += toolStripMenuItem29_Click;
             // 
@@ -497,48 +503,48 @@
             // 
             xToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { toolStripMenuItem6, toolStripMenuItem5, toolStripMenuItem4, toolStripMenuItem3, toolStripMenuItem2, toolStripMenuItem19 });
             xToolStripMenuItem.Name = "xToolStripMenuItem";
-            xToolStripMenuItem.Size = new Size(100, 22);
+            xToolStripMenuItem.Size = new Size(126, 26);
             xToolStripMenuItem.Text = "1.20x";
             // 
             // toolStripMenuItem6
             // 
             toolStripMenuItem6.Name = "toolStripMenuItem6";
-            toolStripMenuItem6.Size = new Size(104, 22);
+            toolStripMenuItem6.Size = new Size(130, 26);
             toolStripMenuItem6.Text = "1.20.6";
             toolStripMenuItem6.Click += toolStripMenuItem6_Click;
             // 
             // toolStripMenuItem5
             // 
             toolStripMenuItem5.Name = "toolStripMenuItem5";
-            toolStripMenuItem5.Size = new Size(104, 22);
+            toolStripMenuItem5.Size = new Size(130, 26);
             toolStripMenuItem5.Text = "1.20.5";
             toolStripMenuItem5.Click += toolStripMenuItem5_Click;
             // 
             // toolStripMenuItem4
             // 
             toolStripMenuItem4.Name = "toolStripMenuItem4";
-            toolStripMenuItem4.Size = new Size(104, 22);
+            toolStripMenuItem4.Size = new Size(130, 26);
             toolStripMenuItem4.Text = "1.20.4";
             toolStripMenuItem4.Click += toolStripMenuItem4_Click;
             // 
             // toolStripMenuItem3
             // 
             toolStripMenuItem3.Name = "toolStripMenuItem3";
-            toolStripMenuItem3.Size = new Size(104, 22);
+            toolStripMenuItem3.Size = new Size(130, 26);
             toolStripMenuItem3.Text = "1.20.2";
             toolStripMenuItem3.Click += toolStripMenuItem3_Click;
             // 
             // toolStripMenuItem2
             // 
             toolStripMenuItem2.Name = "toolStripMenuItem2";
-            toolStripMenuItem2.Size = new Size(104, 22);
+            toolStripMenuItem2.Size = new Size(130, 26);
             toolStripMenuItem2.Text = "1.20.1";
             toolStripMenuItem2.Click += toolStripMenuItem2_Click;
             // 
             // toolStripMenuItem19
             // 
             toolStripMenuItem19.Name = "toolStripMenuItem19";
-            toolStripMenuItem19.Size = new Size(104, 22);
+            toolStripMenuItem19.Size = new Size(130, 26);
             toolStripMenuItem19.Text = "1.20";
             toolStripMenuItem19.Click += toolStripMenuItem19_Click;
             // 
@@ -546,49 +552,64 @@
             // 
             xToolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { toolStripMenuItem10, toolStripMenuItem9, toolStripMenuItem8, toolStripMenuItem7 });
             xToolStripMenuItem1.Name = "xToolStripMenuItem1";
-            xToolStripMenuItem1.Size = new Size(100, 22);
+            xToolStripMenuItem1.Size = new Size(126, 26);
             xToolStripMenuItem1.Text = "1.19x";
             // 
             // toolStripMenuItem10
             // 
             toolStripMenuItem10.Name = "toolStripMenuItem10";
-            toolStripMenuItem10.Size = new Size(104, 22);
+            toolStripMenuItem10.Size = new Size(130, 26);
             toolStripMenuItem10.Text = "1.19.4";
             toolStripMenuItem10.Click += toolStripMenuItem10_Click;
             // 
             // toolStripMenuItem9
             // 
             toolStripMenuItem9.Name = "toolStripMenuItem9";
-            toolStripMenuItem9.Size = new Size(104, 22);
+            toolStripMenuItem9.Size = new Size(130, 26);
             toolStripMenuItem9.Text = "1.19.3";
             toolStripMenuItem9.Click += toolStripMenuItem9_Click;
             // 
             // toolStripMenuItem8
             // 
             toolStripMenuItem8.Name = "toolStripMenuItem8";
-            toolStripMenuItem8.Size = new Size(104, 22);
+            toolStripMenuItem8.Size = new Size(130, 26);
             toolStripMenuItem8.Text = "1.19.2";
             toolStripMenuItem8.Click += toolStripMenuItem8_Click;
             // 
             // toolStripMenuItem7
             // 
             toolStripMenuItem7.Name = "toolStripMenuItem7";
-            toolStripMenuItem7.Size = new Size(104, 22);
+            toolStripMenuItem7.Size = new Size(130, 26);
             toolStripMenuItem7.Text = "1.19.1";
             toolStripMenuItem7.Click += toolStripMenuItem7_Click;
             // 
             // spigotpluginsToolStripMenuItem
             // 
             spigotpluginsToolStripMenuItem.Name = "spigotpluginsToolStripMenuItem";
-            spigotpluginsToolStripMenuItem.Size = new Size(103, 20);
+            spigotpluginsToolStripMenuItem.Size = new Size(129, 24);
             spigotpluginsToolStripMenuItem.Text = "Spigot (plugins)";
             spigotpluginsToolStripMenuItem.Visible = false;
             // 
+            // jDKToolStripMenuItem
+            // 
+            jDKToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { jDK21ToolStripMenuItem });
+            jDKToolStripMenuItem.Name = "jDKToolStripMenuItem";
+            jDKToolStripMenuItem.Size = new Size(48, 24);
+            jDKToolStripMenuItem.Text = "JDK";
+            jDKToolStripMenuItem.Visible = false;
+            // 
+            // jDK21ToolStripMenuItem
+            // 
+            jDK21ToolStripMenuItem.Name = "jDK21ToolStripMenuItem";
+            jDK21ToolStripMenuItem.Size = new Size(137, 26);
+            jDK21ToolStripMenuItem.Text = "JDK 21";
+            // 
             // button_playit
             // 
-            button_playit.Location = new Point(176, 219);
+            button_playit.Location = new Point(201, 292);
+            button_playit.Margin = new Padding(3, 4, 3, 4);
             button_playit.Name = "button_playit";
-            button_playit.Size = new Size(116, 23);
+            button_playit.Size = new Size(133, 31);
             button_playit.TabIndex = 33;
             button_playit.Text = "Installer";
             button_playit.UseVisualStyleBackColor = true;
@@ -598,20 +619,42 @@
             // Playit_label
             // 
             Playit_label.AutoSize = true;
-            Playit_label.Location = new Point(14, 223);
+            Playit_label.Location = new Point(16, 297);
             Playit_label.Name = "Playit_label";
-            Playit_label.Size = new Size(107, 15);
+            Playit_label.Size = new Size(134, 20);
             Playit_label.TabIndex = 34;
             Playit_label.Text = "Playit pour le multi";
             Playit_label.Visible = false;
             // 
+            // button_jdklocal
+            // 
+            button_jdklocal.Location = new Point(201, 87);
+            button_jdklocal.Name = "button_jdklocal";
+            button_jdklocal.Size = new Size(132, 29);
+            button_jdklocal.TabIndex = 35;
+            button_jdklocal.Text = "Installer";
+            button_jdklocal.UseVisualStyleBackColor = true;
+            button_jdklocal.Visible = false;
+            button_jdklocal.Click += button4_Click_2;
+            // 
+            // label_jdklocal
+            // 
+            label_jdklocal.AutoSize = true;
+            label_jdklocal.Location = new Point(36, 96);
+            label_jdklocal.Name = "label_jdklocal";
+            label_jdklocal.Size = new Size(70, 20);
+            label_jdklocal.TabIndex = 36;
+            label_jdklocal.Text = "JDK local";
+            // 
             // Form1
             // 
             AllowDrop = true;
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1077, 572);
+            ClientSize = new Size(1231, 763);
+            Controls.Add(label_jdklocal);
+            Controls.Add(button_jdklocal);
             Controls.Add(Playit_label);
             Controls.Add(button_playit);
             Controls.Add(button3);
@@ -630,7 +673,6 @@
             Controls.Add(label_jdk21);
             Controls.Add(button1);
             Controls.Add(menuStrip1);
-            Margin = new Padding(3, 2, 3, 2);
             Name = "Form1";
             Text = "Dow";
             Load += Form1_Load;
@@ -706,5 +748,9 @@
         private ToolStripMenuItem toolStripMenuItem36;
         private Button button_playit;
         private Label Playit_label;
+        private Button button_jdklocal;
+        private Label label_jdklocal;
+        private ToolStripMenuItem jDKToolStripMenuItem;
+        private ToolStripMenuItem jDK21ToolStripMenuItem;
     }
 }

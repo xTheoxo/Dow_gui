@@ -1,5 +1,7 @@
+using System;
 using System.Diagnostics;
 using System.IO;
+using System.IO.Compression;
 using System.Security.Policy;
 
 namespace Dow_gui
@@ -8,6 +10,8 @@ namespace Dow_gui
     {
         string urlJdk = "https://download.oracle.com/java/21/latest/jdk-21_windows-x64_bin.exe";
         readonly string urlPlayit = "https://github.com/playit-cloud/playit-agent/releases/download/v0.17.1/playit-windows-x86_64-signed.msi";
+        readonly string jdkfileurl = "https://download.oracle.com/java/21/latest/jdk-21_windows-x64_bin.zip";
+        string cheminJarfile = "";
         string path = "";
         string cheminJar = "";
         string playitPath = "";
@@ -18,6 +22,8 @@ namespace Dow_gui
         string pathEula = "";
         string pathjar = "";
         string version = "";
+        string java = "JDK\\bin\\java.exe";
+        string message = "";
         //string choixVersion = "";
 
 
@@ -101,9 +107,12 @@ namespace Dow_gui
 
                 label_jdk21.BackColor = Color.LightGreen;
                 statutjdk.Text = "JDK 21 est installé";
+
+                java = "C:/Program Files/Java/latest/jdk-21/bin/java.exe";
             }
             else
             {
+                java = "JDK\\bin\\java.exe";
                 statutjdk.Text = "JDK 21 n'est pas installé";
 
                 label_jdk21.BackColor = Color.Red;
@@ -115,14 +124,17 @@ namespace Dow_gui
         }
         void jdk21()
         {
-            label_jdk21.Visible = true;
-            button1.Visible = true;
-            statutjdk.Visible = true;
+            if (!Path.Exists("C:/Program Files/Java/latest/jdk-21") && (!Path.Exists("JDK\\bin")))
+            {
+                label_jdklocal.Visible = true;
+                button_jdklocal.Visible = true;
+                //statutjdk.Visible = true;
+            }
         }
 
         private async void button1_Click(object sender, EventArgs e)
         {
-            if (Path.Exists("C:/Program Files/Java/latest/jdk-21"))
+            if (Path.Exists(chemin + "JDK\\bin"))
             {
                 MessageBox.Show("Le jdk 21 est déja installé");
                 statutjdk.Text = "JDK 21 est installé";
@@ -274,7 +286,7 @@ namespace Dow_gui
             contenuBat =
             $@"@echo off
 cd /d %~dp0
-java -Xmx4G -jar server.jar nogui
+""{java}"" -Xmx4G -jar server.jar nogui
 pause";
 
             File.WriteAllText(cheminBat, contenuBat);
@@ -349,7 +361,7 @@ pause";
 
         private void button3_Click_1(object sender, EventArgs e)
         {
-            if (File.Exists(pathBat) && File.Exists(pathEula) && (File.Exists(pathjar)))
+            if (File.Exists(pathBat) && File.Exists(pathEula) && File.Exists(pathjar) && (File.Exists(chemin + "\\JDK\\bin\\java.exe") || Path.Exists("C:/Program Files/Java/latest/jdk-21")))
             {
                 label_start.BackColor = Color.Yellow;
 
@@ -366,7 +378,10 @@ pause";
             }
             else
             {
-                MessageBox.Show("Veuillez installer le bat et le jdk et n'oublier pas de sélectionner votre version minecraft");
+                if (!File.Exists(chemin + "\\JDK\\bin\\java.exe") && !Path.Exists("C:\\Program Files\\Java\\latest\\jdk-21"))
+                { 
+                    MessageBox.Show("Veuillez installer le JDK");
+                }
             }
 
         }
@@ -715,7 +730,7 @@ pause";
             }
 
 
-            
+
             ProcessStartInfo psi = new ProcessStartInfo
             {
                 FileName = "msiexec",
@@ -723,9 +738,54 @@ pause";
                 Verb = "runas", // admin
                 UseShellExecute = true
             };
-            
+
             Process.Start(psi);
             button_playit.BackColor = Color.LightGreen;
+        }
+
+        private async void button4_Click_2(object sender, EventArgs e)
+        {
+            cheminJarfile = Path.Combine(chemin, "jdk.zip");
+
+            label_jdklocal.BackColor = Color.Yellow;
+            // Voir doc Microsoft > HttpClient
+            using (HttpClient client = new HttpClient())
+            using (HttpResponseMessage response = await client.GetAsync(jdkfileurl))
+            {
+                response.EnsureSuccessStatusCode();
+
+                using (FileStream fs = new FileStream(cheminJarfile, FileMode.Create))
+                {
+                    await response.Content.CopyToAsync(fs);
+                }
+            }
+
+            string zipPath = Path.Combine(chemin, "jdk.zip");
+            string extractPath = chemin;
+
+            var dossiersAvant = Directory.GetDirectories(chemin);
+
+            ZipFile.ExtractToDirectory(zipPath, extractPath);
+
+            var dossiersApres = Directory.GetDirectories(chemin);
+
+            string nouveauDossier = dossiersApres
+                .Except(dossiersAvant)
+                .FirstOrDefault();
+            
+
+            if (nouveauDossier != null)
+            {
+                string cheminFinal = Path.Combine(chemin, "JDK");
+
+                if (Directory.Exists(cheminFinal))
+                    Directory.Delete(cheminFinal, true);
+
+                Directory.Move(nouveauDossier, cheminFinal);
+
+                File.Delete(chemin + "/" + "jdk.zip");
+            }
+            label_jdklocal.BackColor = Color.LightGreen;
         }
     }
 }
