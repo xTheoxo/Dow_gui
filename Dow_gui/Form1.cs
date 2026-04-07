@@ -256,9 +256,8 @@ namespace Dow_gui
                 {
                     label_start.Visible = true;
                     button_start.Visible = true;
+                    button_jdklocal.Visible = true;
                 }
-                if (Path.Exists(chemin + "JDK\\bin"))
-                    MessageBox.Show("Le jdk 21 est déja installé");
             }
         }
 
@@ -752,7 +751,6 @@ pause";
         {
             if (!Path.Exists(chemin + "JDK\\bin"))
             {
-                MessageBox.Show("Le jdk 21 est déja installé");
                 cheminJarfile = Path.Combine(chemin, "jdk.zip");
 
                 label_jdklocal.BackColor = Color.Yellow;
