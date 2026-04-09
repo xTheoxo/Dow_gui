@@ -75,8 +75,17 @@ namespace Dow_gui
 
             //1.21.x
             { "Vanilla 1.21.11", ("https://piston-data.mojang.com/v1/objects/64bb6d763bed0a9f1d632ec347938594144943ed/server.jar","test") },
+            { "Vanilla 1.21.10", ("https://piston-data.mojang.com/v1/objects/95495a7f485eedd84ce928cef5e223b757d2f764/server.jar","test") },
+            { "Vanilla 1.21.9", ("https://piston-data.mojang.com/v1/objects/11e54c2081420a4d49db3007e66c80a22579ff2a/server.jar","test") },
             { "Vanilla 1.21.8", ("https://piston-data.mojang.com/v1/objects/6bce4ef400e4efaa63a13d5e6f6b500be969ef81/server.jar","test") },
+            { "Vanilla 1.21.7", ("https://piston-data.mojang.com/v1/objects/05e4b48fbc01f0385adb74bcff9751d34552486c/server.jar","test") },
+            { "Vanilla 1.21.6", ("https://piston-data.mojang.com/v1/objects/6e64dcabba3c01a7271b4fa6bd898483b794c59b/server.jar","test") },
+            { "Vanilla 1.21.5", ("https://piston-data.mojang.com/v1/objects/e6ec2f64e6080b9b5d9b471b291c33cc7f509733/server.jar","test") },
+            { "Vanilla 1.21.4", ("https://piston-data.mojang.com/v1/objects/4707d00eb834b446575d89a61a11b5d548d8c001/server.jar","test") },
+            { "Vanilla 1.21.3", ("https://piston-data.mojang.com/v1/objects/45810d238246d90e811d896f87b14695b7fb6839/server.jar","test") },
+            { "Vanilla 1.21.2", ("https://piston-data.mojang.com/v1/objects/7bf95409b0d9b5388bfea3704ec92012d273c14c/server.jar","test") },
             { "Vanilla 1.21.1", ("https://piston-data.mojang.com/v1/objects/59353fb40c36d304f2035d51e7d6e6baa98dc05c/server.jar","test") },
+            { "Vanilla 1.21", ("https://piston-data.mojang.com/v1/objects/450698d1863ab5180c25d7c804ef0fe6369dd1ba/server.jar","test") },
 
             //1.20.x            
             { "Vanilla 1.20.6", ("https://piston-data.mojang.com/v1/objects/145ff0858209bcfc164859ba735d4199aafa1eea/server.jar","test") },
@@ -385,7 +394,7 @@ pause";
             else
             {
                 if (!File.Exists(chemin + "\\JDK\\bin\\java.exe") && !Path.Exists("C:\\Program Files\\Java\\latest\\jdk-21"))
-                { 
+                {
                     MessageBox.Show("Veuillez installer le JDK");
                 }
             }
@@ -798,6 +807,55 @@ pause";
             }
             else
                 MessageBox.Show("Le jdk 21 est déjà installé");
+        }
+
+        private void toolStripMenuItem37_Click(object sender, EventArgs e)
+        {
+            jdk21();
+            version = version_choix_vanilla["Vanilla 1.21"].link;
+            version_mc.Text = "Vanilla 1.21";
+        }
+
+        private void toolStripMenuItem38_Click(object sender, EventArgs e)
+        {
+            jdk21();
+            version = version_choix_vanilla["Vanilla 1.21.2"].link;
+            version_mc.Text = "Vanilla 1.21.2";
+        }
+
+        private void toolStripMenuItem39_Click(object sender, EventArgs e)
+        {
+            jdk21();
+            version = version_choix_vanilla["Vanilla 1.21.3"].link;
+            version_mc.Text = "Vanilla 1.21.3";
+        }
+
+        private void toolStripMenuItem40_Click(object sender, EventArgs e)
+        {
+            jdk21();
+            version = version_choix_vanilla["Vanilla 1.21.4"].link;
+            version_mc.Text = "Vanilla 1.21.4";
+        }
+
+        private void toolStripMenuItem41_Click(object sender, EventArgs e)
+        {
+            jdk21();
+            version = version_choix_vanilla["Vanilla 1.21.5"].link;
+            version_mc.Text = "Vanilla 1.21.5";
+        }
+
+        private void toolStripMenuItem42_Click(object sender, EventArgs e)
+        {
+            jdk21();
+            version = version_choix_vanilla["Vanilla 1.21.6"].link;
+            version_mc.Text = "Vanilla 1.21.6";
+        }
+
+        private void toolStripMenuItem43_Click(object sender, EventArgs e)
+        {
+            jdk21();
+            version = version_choix_vanilla["Vanilla 1.21.7"].link;
+            version_mc.Text = "Vanilla 1.21.7";
         }
     }
 }
