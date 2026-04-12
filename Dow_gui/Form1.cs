@@ -41,7 +41,7 @@ namespace Dow_gui
             { "Paper 26.1.1", ("https://fill-data.papermc.io/v1/objects/f3312f295d1fff36283dcc4bed504b20cd932e4ca700d6ad42bf917155537592/paper-26.1.1-18.jar","test") },
             
             //1.21x
-            { "Paper 1.21.11", ("https://fill-data.papermc.io/v1/objects/7a6774a582b1c24328b779854f43f2d3ac3bd2daeb5cedbbd1074f0871635a18/paper-1.21.11-128.jar","test") },
+            { "Paper 1.21.11", ("https://fill-data.papermc.io/v1/objects/25eb85bd8415195ce4bc188e1939e0c7cef77fb51d26d4e766407ee922561097/paper-1.21.11-130.jar","test") },
             { "Paper 1.21.10", ("https://fill-data.papermc.io/v1/objects/158703f75a26f842ea656b3dc6d75bf3d1ec176b97a2c36384d0b80b3871af53/paper-1.21.10-130.jar","test") },
             { "Paper 1.21.9", ("https://fill-data.papermc.io/v1/objects/aec002e77c7566e49494fdf05430b96078ffd1d7430e652d4f338fef951e7a10/paper-1.21.9-59.jar","test") },
             { "Paper 1.21.8", ("https://fill-data.papermc.io/v1/objects/8de7c52c3b02403503d16fac58003f1efef7dd7a0256786843927fa92ee57f1e/paper-1.21.8-60.jar","test") },
@@ -433,7 +433,8 @@ pause";
 
         private void button3_Click_3(object sender, EventArgs e)
         {
-
+            Form2 form = new Form2(chemin);
+            form.ShowDialog();
         }
 
         private void button4_Click(object sender, EventArgs e)
