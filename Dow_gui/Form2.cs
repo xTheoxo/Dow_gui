@@ -16,6 +16,8 @@ namespace Dow_gui
         string path;
         int MaxPlayer; // Valeur par défaut
         string Difficulte; // Valeur par défaut
+        bool pvp; // Valeur par défaut
+        int Maxdistance; // Valeur par défaut
 
         public Form2(string cheminRecu)
         {
@@ -23,7 +25,38 @@ namespace Dow_gui
             chemin = cheminRecu;
 
 
+            path = Path.Combine(chemin, "server.properties");
+
+            var lignes = File.ReadAllLines(path);
+
+            string valeur = "";
+
+            foreach (var ligne in lignes)
+            {
+                if (ligne.StartsWith("max-players="))
+                {
+                    valeur = ligne.Split('=')[1];
+                    numUpDownClients.Value = Convert.ToInt32(valeur);
+                }
+            }
+
+
+            lignes = File.ReadAllLines(path);
+
+            valeur = "";
+
+            foreach (var ligne in lignes)
+            {
+                if (ligne.StartsWith("view-distance="))
+                {
+                    valeur = ligne.Split('=')[1];
+                    numericUpDowndistance.Value = Convert.ToInt32(valeur);
+                }
+            }
+
+
         }
+
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -82,6 +115,51 @@ namespace Dow_gui
                 if (lignes[i].StartsWith("difficulty="))
                 {
                     lignes[i] = "difficulty=" + Difficulte;
+                }
+            }
+
+            File.WriteAllLines(path, lignes);
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxpvp.Checked)
+                pvp = true;
+            else
+                pvp = false;
+
+            path = Path.Combine(chemin, "server.properties");
+
+            var lignes = File.ReadAllLines(path);
+
+            for (int i = 0; i < lignes.Length; i++)
+            {
+                if (lignes[i].StartsWith("pvp="))
+                {
+                    lignes[i] = "pvp=" + pvp;
+                }
+            }
+            File.WriteAllLines(path, lignes);
+        }
+
+        private void Form2_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void numericUpDown1_ValueChanged_1(object sender, EventArgs e)
+        {
+            Maxdistance = (int)numericUpDowndistance.Value;
+
+            path = Path.Combine(chemin, "server.properties");
+
+            var lignes = File.ReadAllLines(path);
+
+            for (int i = 0; i < lignes.Length; i++)
+            {
+                if (lignes[i].StartsWith("view-distance="))
+                {
+                    lignes[i] = "view-distance=" + Maxdistance;
                 }
             }
 

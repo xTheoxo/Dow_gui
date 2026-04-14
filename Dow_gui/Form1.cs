@@ -858,5 +858,10 @@ pause";
             version = version_choix_vanilla["Vanilla 1.21.7"].link;
             version_mc.Text = "Vanilla 1.21.7";
         }
+
+        private void label3_Click_3(object sender, EventArgs e)
+        {
+
+        }
     }
 }
