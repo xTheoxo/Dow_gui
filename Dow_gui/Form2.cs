@@ -16,7 +16,7 @@ namespace Dow_gui
         string path;
         int MaxPlayer; // Valeur par défaut
         string Difficulte; // Valeur par défaut
-        bool pvp; // Valeur par défaut
+        string pvp; // Valeur par défaut
         int Maxdistance; // Valeur par défaut
 
         public Form2(string cheminRecu)
@@ -54,6 +54,45 @@ namespace Dow_gui
                 }
             }
 
+
+            lignes = File.ReadAllLines(path);
+
+            valeur = "";
+
+            foreach (var ligne in lignes)
+            {
+                if (ligne.StartsWith("pvp="))
+                {
+                    valeur = ligne.Split('=')[1];
+                    if (valeur == "true")
+                        checkBoxpvp.Checked = true;
+                    else
+                        checkBoxpvp.Checked = false;
+                }
+            }
+
+            lignes = File.ReadAllLines(path);
+
+            valeur = "";
+
+            foreach (var ligne in lignes)
+            {
+                if (ligne.StartsWith("difficulty="))
+                {
+                    valeur = ligne.Split('=')[1];
+                    if (valeur == "normal")
+                        comboBox1.Text = "Normal";
+
+                    else if (valeur == "peaceful")
+                        comboBox1.Text = "Paisible";
+
+                    else if (valeur == "easy")
+                        comboBox1.Text = "Facile";
+
+                    else if (valeur == "hard")
+                        comboBox1.Text = "Difficile";
+                }
+            }
 
         }
 
@@ -124,9 +163,9 @@ namespace Dow_gui
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBoxpvp.Checked)
-                pvp = true;
+                pvp = "true";
             else
-                pvp = false;
+                pvp = "false";
 
             path = Path.Combine(chemin, "server.properties");
 
