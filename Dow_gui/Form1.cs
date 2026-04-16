@@ -10,7 +10,7 @@ namespace Dow_gui
     {
         string urlJdk = "https://download.oracle.com/java/21/latest/jdk-21_windows-x64_bin.exe";
         readonly string urlPlayit = "https://github.com/playit-cloud/playit-agent/releases/download/v0.17.1/playit-windows-x86_64-signed.msi";
-        readonly string jdkfileurl = "https://download.oracle.com/java/21/latest/jdk-21_windows-x64_bin.zip";
+        string jdkfileurl = "https://download.oracle.com/java/21/latest/jdk-21_windows-x64_bin.zip";
         string cheminJarfile = "";
         string path = "";
         string cheminJar = "";
@@ -31,14 +31,15 @@ namespace Dow_gui
 
         Dictionary<string, (string chem, string urljdk)> JDK = new Dictionary<string, (string chem, string urljdk)>()
             {
-                { "21", ("C:/Program Files/Java/latest/jdk-21", "https://download.oracle.com/java/21/latest/jdk-21_windows-x64_bin.exe") },
-                { "25", ("C:/Program Files/Java/latest/jdk-25", "https://download.oracle.com/java/21/latest/jdk-25_windows-x64_bin.exe") }
+                { "21", ("C:/Program Files/Java/latest/jdk-21", "https://download.oracle.com/java/21/latest/jdk-21_windows-x64_bin.zip") },
+                { "25", ("C:/Program Files/Java/latest/jdk-25", "https://download.oracle.com/java/25/latest/jdk-25_windows-x64_bin.zip") }
             };
 
-        Dictionary<string, (string link, string somme)> version_choix_paper = new Dictionary<string, (string link, string somme)>()
+        Dictionary<string, (string link, string jdk)> version_choix_paper = new Dictionary<string, (string link, string jdk)>()
         {
-            //26.1
-            { "Paper 26.1.1", ("https://fill-data.papermc.io/v1/objects/f3312f295d1fff36283dcc4bed504b20cd932e4ca700d6ad42bf917155537592/paper-26.1.1-18.jar","test") },
+            //26x
+            { "Paper 26.1.2", ("https://fill-data.papermc.io/v1/objects/bcf7d5a399428d252e0710de9e305935e0af0ce8b4d50fd4651bc3d6f6a320fb/paper-26.1.2-7.jar","test") },
+            { "Paper 26.1.1", ("https://fill-data.papermc.io/v1/objects/43d08ed52c7af4e9f72769122501a5c15f99c7ace0c428a3eef040fd3f6fdbc5/paper-26.1.1-29.jar","test") },
             
             //1.21x
             { "Paper 1.21.11", ("https://fill-data.papermc.io/v1/objects/25eb85bd8415195ce4bc188e1939e0c7cef77fb51d26d4e766407ee922561097/paper-1.21.11-130.jar","test") },
@@ -71,7 +72,10 @@ namespace Dow_gui
 
         Dictionary<string, (string link, string somme)> version_choix_vanilla = new Dictionary<string, (string link, string somme)>()
         {
-            //{ "Paper 26.1.1", "https://fill-data.papermc.io/v1/objects/da497e12b43e5b61c5df150e4bfd0de0f53043e57d2ac98dd59289ee9da4ad68/paper-1.21.12-128.jar" },
+            //26x
+            { "Vanilla 26.1.2", ("https://piston-data.mojang.com/v1/objects/97ccd4c0ed3f81bbb7bfacddd1090b0c56f9bc51/server.jar", "test") },
+            { "Vanilla 26.1.1", ("https://piston-data.mojang.com/v1/objects/49c8195703ad0ba4f0a4efbccfd85a4a8ca57431/server.jar", "test") },
+            { "Vanilla 26.1", ("https://piston-data.mojang.com/v1/objects/3872a7f07a1a595e651aef8b058dfc2bb3772f46/server.jar", "test") },
 
             //1.21.x
             { "Vanilla 1.21.11", ("https://piston-data.mojang.com/v1/objects/64bb6d763bed0a9f1d632ec347938594144943ed/server.jar","test") },
@@ -133,10 +137,20 @@ namespace Dow_gui
             label_Dossier_serv.BackColor = Color.Red;
 
 
+
         }
         void jdk21()
         {
             if (!Path.Exists("C:/Program Files/Java/latest/jdk-21") && (!Path.Exists("JDK\\bin")))
+            {
+                label_jdklocal.Visible = true;
+                button_jdklocal.Visible = true;
+                //statutjdk.Visible = true;
+            }
+        }
+        void jdk25()
+        {
+            if (!Path.Exists("C:/Program Files/Java/latest/jdk-25") && (!Path.Exists("JDK\\bin")))
             {
                 label_jdklocal.Visible = true;
                 button_jdklocal.Visible = true;
@@ -268,6 +282,15 @@ namespace Dow_gui
                     button_start.Visible = true;
                     button_jdklocal.Visible = true;
                     label_jdklocal.Visible = true;
+                }
+                if (Path.Exists(chemin + "JDK"))
+                {
+                    java = "JDK\\bin\\java.exe";
+
+                    status_labeljdklocal.Visible = true;
+                    status_labeljdklocal.Text = "JDK est installé";
+
+                    label_jdk21.BackColor = Color.Red;
                 }
             }
         }
@@ -433,8 +456,13 @@ pause";
 
         private void button3_Click_3(object sender, EventArgs e)
         {
-            Form2 form = new Form2(chemin);
-            form.ShowDialog();
+            if (File.Exists(chemin + "/" + "server.properties"))
+            {
+                Form2 form = new Form2(chemin);
+                form.ShowDialog();
+            }
+            else
+                MessageBox.Show("Veuillez d'abord installer une version de minecraft pour pouvoir accéder aux propriétés du serveur.");
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -763,6 +791,8 @@ pause";
         {
             if (!Path.Exists(chemin + "JDK\\bin"))
             {
+                status_labeljdklocal.Text = "En cours d'installation...";
+                status_labeljdklocal.Visible = true;
                 cheminJarfile = Path.Combine(chemin, "jdk.zip");
 
                 label_jdklocal.BackColor = Color.Yellow;
@@ -803,8 +833,8 @@ pause";
 
                     File.Delete(chemin + "/" + "jdk.zip");
                 }
+                status_labeljdklocal.Text = "Installé";
                 label_jdklocal.BackColor = Color.LightGreen;
-                label_statutjdklocal.Text = "JDK installé";
             }
             else
                 MessageBox.Show("Le jdk 21 est déjà installé");
@@ -862,6 +892,46 @@ pause";
         private void label3_Click_3(object sender, EventArgs e)
         {
 
+        }
+
+        private void toolStripMenuItem45_Click(object sender, EventArgs e)
+        {
+            jdk25();
+            version = version_choix_vanilla["Vanilla 26.1"].link;
+            jdkfileurl = JDK["25"].urljdk;
+            version_mc.Text = "Vanilla 26.1";
+        }
+
+        private void toolStripMenuItem46_Click(object sender, EventArgs e)
+        {
+            jdk25();
+            version = version_choix_vanilla["Vanilla 26.1.2"].link;
+            jdkfileurl = JDK["25"].urljdk;
+            version_mc.Text = "Vanilla 26.1.2";
+        }
+
+        private void toolStripMenuItem47_Click(object sender, EventArgs e)
+        {
+            jdk25();
+            version = version_choix_vanilla["Vanilla 26.1.1"].link;
+            jdkfileurl = JDK["25"].urljdk;
+            version_mc.Text = "Vanilla 26.1.1";
+        }
+
+        private void toolStripMenuItem48_Click(object sender, EventArgs e)
+        {
+            jdk25();
+            version = version_choix_paper["Paper 26.1.1"].link;
+            jdkfileurl = JDK["25"].urljdk;
+            version_mc.Text = "Paper 26.1.1";
+        }
+
+        private void toolStripMenuItem49_Click(object sender, EventArgs e)
+        {
+            jdk25();
+            version = version_choix_paper["Paper 26.1.2"].link;
+            jdkfileurl = JDK["25"].urljdk;
+            version_mc.Text = "Paper 26.1.2";
         }
     }
 }
